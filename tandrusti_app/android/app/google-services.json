@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878321739997",
+    "project_id": "ttandrusti-3bacf",
+    "storage_bucket": "ttandrusti-3bacf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878321739997:android:8958cb1d846f4c4a35d334",
+        "android_client_info": {
+          "package_name": "com.example.tandrusti_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEx561bTve6q99qV-D9FeOma5cFEDrPoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

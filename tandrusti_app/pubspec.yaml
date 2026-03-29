@@ -1,0 +1,27 @@
+name: tandrusti_app
+description: A comprehensive healthcare platform for Kurdistan context.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.3.0
+  flutter_local_notifications: ^17.0.0 # for pill reminders
+  timezone: ^0.9.2 # for notification scheduling
+  shared_preferences: ^2.3.2 # for favorites
+  firebase_core: ^3.0.0
+  cloud_firestore: ^5.0.0
+  firebase_auth: ^5.0.0
+  google_fonts: ^6.1.0 # For premium aesthetics
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

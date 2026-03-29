@@ -1,0 +1,210 @@
+> Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle:compileKotlin UP-TO-DATE
+> Task :gradle:compileJava NO-SOURCE
+> Task :gradle:compileGroovy NO-SOURCE
+> Task :gradle:pluginDescriptors UP-TO-DATE
+> Task :gradle:processResources UP-TO-DATE
+> Task :gradle:classes UP-TO-DATE
+> Task :gradle:jar UP-TO-DATE
+
+> Configure project :path_provider_android
+Warning: The plugin path_provider_android requires Android SDK version 36 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+
+> Configure project :shared_preferences_android
+Warning: The plugin shared_preferences_android requires Android SDK version 36 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+
+> Configure project :url_launcher_android
+Warning: The plugin url_launcher_android requires Android SDK version 36 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+Your project is configured to compile against Android SDK 35, but the following plugin(s) require to be compiled against a higher Android SDK version:
+- path_provider_android compiles against Android SDK 36
+- shared_preferences_android compiles against Android SDK 36
+- url_launcher_android compiles against Android SDK 36
+Fix this issue by compiling against the highest Android SDK version (they are backward compatible).
+Add the following to C:\Users\Lenovo\OneDrive\Desktop\projects\tandrusti\tandrusti_app\android\app\build.gradle.kts:
+
+    android {
+        compileSdk = 36
+        ...
+    }
+
+> Task :clean
+> Task :app:externalNativeBuildCleanDebug
+> Task :app:externalNativeBuildCleanProfile
+> Task :app:externalNativeBuildCleanRelease
+> Task :app:clean UP-TO-DATE
+> Task :cloud_firestore:clean UP-TO-DATE
+> Task :firebase_core:clean UP-TO-DATE
+> Task :path_provider_android:clean UP-TO-DATE
+> Task :shared_preferences_android:clean UP-TO-DATE
+> Task :url_launcher_android:clean UP-TO-DATE
+> Task :app:ReleaseMinSdkCheck
+> Task :app:compileFlutterBuildRelease
+> Task :app:packJniLibsflutterBuildRelease
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:configureCMakeRelease[arm64-v8a]
+> Task :app:buildCMakeRelease[arm64-v8a]
+> Task :app:configureCMakeRelease[armeabi-v7a]
+> Task :app:buildCMakeRelease[armeabi-v7a]
+> Task :app:configureCMakeRelease[x86_64]
+> Task :app:buildCMakeRelease[x86_64]
+> Task :app:mergeReleaseJniLibFolders
+> Task :cloud_firestore:preBuild UP-TO-DATE
+> Task :cloud_firestore:preReleaseBuild UP-TO-DATE
+> Task :cloud_firestore:mergeReleaseJniLibFolders
+> Task :cloud_firestore:mergeReleaseNativeLibs NO-SOURCE
+> Task :firebase_core:preBuild UP-TO-DATE
+> Task :firebase_core:preReleaseBuild UP-TO-DATE
+> Task :cloud_firestore:copyReleaseJniLibsProjectOnly
+> Task :firebase_core:mergeReleaseJniLibFolders
+> Task :firebase_core:mergeReleaseNativeLibs NO-SOURCE
+> Task :path_provider_android:preBuild UP-TO-DATE
+> Task :path_provider_android:preReleaseBuild UP-TO-DATE
+> Task :firebase_core:copyReleaseJniLibsProjectOnly
+> Task :path_provider_android:mergeReleaseJniLibFolders
+> Task :path_provider_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :shared_preferences_android:preBuild UP-TO-DATE
+> Task :shared_preferences_android:preReleaseBuild UP-TO-DATE
+> Task :path_provider_android:copyReleaseJniLibsProjectOnly
+> Task :shared_preferences_android:mergeReleaseJniLibFolders
+> Task :shared_preferences_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :url_launcher_android:preBuild UP-TO-DATE
+> Task :url_launcher_android:preReleaseBuild UP-TO-DATE
+> Task :shared_preferences_android:copyReleaseJniLibsProjectOnly
+> Task :url_launcher_android:mergeReleaseJniLibFolders
+> Task :url_launcher_android:mergeReleaseNativeLibs NO-SOURCE
+> Task :url_launcher_android:copyReleaseJniLibsProjectOnly
+> Task :cloud_firestore:generateReleaseBuildConfig
+> Task :cloud_firestore:generateReleaseResValues
+> Task :cloud_firestore:generateReleaseResources
+> Task :cloud_firestore:packageReleaseResources
+> Task :cloud_firestore:parseReleaseLocalResources
+> Task :cloud_firestore:javaPreCompileRelease
+> Task :firebase_core:generateReleaseBuildConfig
+> Task :firebase_core:generateReleaseResValues
+> Task :cloud_firestore:generateReleaseRFile
+> Task :firebase_core:generateReleaseResources
+> Task :firebase_core:packageReleaseResources
+> Task :firebase_core:javaPreCompileRelease
+> Task :firebase_core:parseReleaseLocalResources
+> Task :path_provider_android:generateReleaseResValues
+> Task :path_provider_android:generateReleaseResources
+> Task :firebase_core:generateReleaseRFile
+> Task :path_provider_android:packageReleaseResources
+> Task :firebase_core:compileReleaseJavaWithJavac
+> Task :firebase_core:bundleLibCompileToJarRelease
+> Task :path_provider_android:parseReleaseLocalResources
+> Task :path_provider_android:javaPreCompileRelease
+> Task :firebase_core:bundleLibRuntimeToDirRelease
+> Task :cloud_firestore:compileReleaseJavaWithJavac
+> Task :shared_preferences_android:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :shared_preferences_android:generateReleaseResValues
+> Task :path_provider_android:generateReleaseRFile
+> Task :cloud_firestore:bundleLibRuntimeToDirRelease
+> Task :app:mergeReleaseNativeLibs
+> Task :shared_preferences_android:generateReleaseResources
+> Task :path_provider_android:compileReleaseJavaWithJavac
+> Task :path_provider_android:bundleLibRuntimeToDirRelease
+> Task :app:stripReleaseDebugSymbols
+> Task :shared_preferences_android:packageReleaseResources
+> Task :shared_preferences_android:parseReleaseLocalResources
+> Task :shared_preferences_android:javaPreCompileRelease
+> Task :url_launcher_android:generateReleaseBuildConfig
+> Task :shared_preferences_android:generateReleaseRFile
+> Task :url_launcher_android:generateReleaseResValues
+> Task :url_launcher_android:generateReleaseResources
+> Task :url_launcher_android:packageReleaseResources
+> Task :url_launcher_android:parseReleaseLocalResources
+> Task :url_launcher_android:javaPreCompileRelease
+> Task :app:buildKotlinToolingMetadata
+> Task :url_launcher_android:generateReleaseRFile
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:extractReleaseNativeSymbolTables
+> Task :url_launcher_android:compileReleaseJavaWithJavac
+> Task :cloud_firestore:writeReleaseAarMetadata
+> Task :firebase_core:writeReleaseAarMetadata
+> Task :path_provider_android:writeReleaseAarMetadata
+> Task :shared_preferences_android:writeReleaseAarMetadata
+> Task :app:cleanMergeReleaseAssets UP-TO-DATE
+> Task :url_launcher_android:writeReleaseAarMetadata
+> Task :app:mergeReleaseShaders
+> Task :app:checkReleaseAarMetadata FAILED
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :url_launcher_android:bundleLibRuntimeToDirRelease
+> Task :cloud_firestore:mergeReleaseShaders
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :shared_preferences_android:compileReleaseKotlin
+
+[Incubating] Problems report is available at: file:///C:/Users/Lenovo/OneDrive/Desktop/projects/tandrusti/tandrusti_app/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:checkReleaseAarMetadata'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.CheckAarMetadataWorkAction
+   > 3 issues were found when checking AAR metadata:
+     
+       1.  Dependency 'androidx.browser:browser:1.9.0' requires libraries and applications that
+           depend on it to compile against version 36 or later of the
+           Android APIs.
+     
+           :app is currently compiled against android-35.
+     
+           Recommended action: Update this project to use a newer compileSdk
+           of at least 36, for example 36.
+     
+           Note that updating a library or application's compileSdk (which
+           allows newer APIs to be used) can be done separately from updating
+           targetSdk (which opts the app in to new runtime behavior) and
+           minSdk (which determines which devices the app can be installed
+           on).
+     
+       2.  Dependency 'androidx.core:core-ktx:1.17.0' requires libraries and applications that
+           depend on it to compile against version 36 or later of the
+           Android APIs.
+     
+           :app is currently compiled against android-35.
+     
+           Recommended action: Update this project to use a newer compileSdk
+           of at least 36, for example 36.
+     
+           Note that updating a library or application's compileSdk (which
+           allows newer APIs to be used) can be done separately from updating
+           targetSdk (which opts the app in to new runtime behavior) and
+           minSdk (which determines which devices the app can be installed
+           on).
+     
+       3.  Dependency 'androidx.core:core:1.17.0' requires libraries and applications that
+           depend on it to compile against version 36 or later of the
+           Android APIs.
+     
+           :app is currently compiled against android-35.
+     
+           Recommended action: Update this project to use a newer compileSdk
+           of at least 36, for example 36.
+     
+           Note that updating a library or application's compileSdk (which
+           allows newer APIs to be used) can be done separately from updating
+           targetSdk (which opts the app in to new runtime behavior) and
+           minSdk (which determines which devices the app can be installed
+           on).
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 17s
+92 actionable tasks: 81 executed, 11 up-to-date
