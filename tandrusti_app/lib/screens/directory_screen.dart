@@ -20,29 +20,6 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
   String _selectedCity = 'All Cities';
   String _selectedSpecialty = 'All Specialties';
 
-  bool _isOpen(String hoursString) {
-    if (hoursString.toLowerCase().contains('24/7')) return true;
-    try {
-      final now = DateTime.now();
-      final currentHour = now.hour;
-      final parts = hoursString.split('-');
-      if (parts.length == 2) {
-        int start = int.parse(parts[0].replaceAll(RegExp(r'[^0-9]'), ''));
-        int end = int.parse(parts[1].replaceAll(RegExp(r'[^0-9]'), ''));
-
-        if (parts[0].toLowerCase().contains('pm') && start != 12) start += 12;
-        if (parts[1].toLowerCase().contains('pm') && end != 12) end += 12;
-        
-        if (end < start) {
-           return currentHour >= start || currentHour < end;
-        }
-        return currentHour >= start && currentHour < end;
-      }
-    } catch (_) {
-    }
-    return false;  
-  }
-
   void _openFilterSheet(String lang) {
      showModalBottomSheet(
         context: context,
@@ -159,11 +136,15 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                     final docs = snapshot.data!.docs.where((doc) {
                       final data = doc.data() as Map<String, dynamic>;
                       final name = (data['name'] ?? '').toString().toLowerCase();
-                      final specialty = (data['specialty'] ?? '').toString().toLowerCase();
+                      final nameKu = (data['nameKu'] ?? '').toString().toLowerCase();
+                      final specialtyRaw = (data['specialty'] ?? '').toString();
+                      final specEn = LocalizationService.translate(specialtyRaw, 'English').toLowerCase();
+                      final specKu = LocalizationService.translate(specialtyRaw, 'Kurdish').toLowerCase();
+                      
                       final city = (data['city'] ?? 'Erbil').toString();
                       final query = _searchQuery.toLowerCase();
                       
-                      bool matchesQuery = name.contains(query) || specialty.contains(query);
+                      bool matchesQuery = name.contains(query) || nameKu.contains(query) || specEn.contains(query) || specKu.contains(query) || specialtyRaw.toLowerCase().contains(query);
                       bool matchesCity = _selectedCity == 'All Cities' || city == _selectedCity;
                       bool matchesSpecialty = _selectedSpecialty == 'All Specialties' || data['specialty'] == _selectedSpecialty;
                       
@@ -180,8 +161,6 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                       itemBuilder: (context, index) {
                         final docId = docs[index].id;
                         final data = docs[index].data() as Map<String, dynamic>;
-                        final doctorHours = data['workingHours'] ?? 'Hours Unknown';
-                        final isOpen = _isOpen(doctorHours);
 
                         return GestureDetector(
                           onTap: () {
@@ -193,7 +172,6 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                           child: DoctorCard(
                             data: data,
                             lang: lang,
-                            isOpen: isOpen,
                           )
                         );
                       },

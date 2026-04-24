@@ -9,14 +9,13 @@ class SeedDataService {
     for (var doc in doctors) {
       await firestore.collection('doctors').doc(doc.id).set({
         'name': doc.name,
+        'nameKu': doc.nameKu ?? '',
         'specialty': doc.specialty,
         'city': doc.city, // Including the new city filter field in the cloud
         'phoneNumber': doc.phoneNumber,
         'clinicLocation': doc.clinicLocation,
         'latitude': doc.latitude,
         'longitude': doc.longitude,
-        'workingHours': doc.workingHours,
-        'rating': doc.rating,
       });
     }
 

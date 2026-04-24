@@ -4,6 +4,7 @@ import '../services/app_state.dart';
 import '../services/auth_service.dart';
 import '../services/localization_service.dart';
 import 'register_screen.dart';
+import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,12 +29,23 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passCtrl.text,
     );
     if (err != null) {
+      final lang = AppState.instance.language;
       setState(() {
         _isLoading = false;
-        _error = err;
+        _error = LocalizationService.translate(err, lang);
       });
     } else {
-      if (mounted) Navigator.pop(context); // Go back after login
+      // Check if email is verified
+      if (AuthService.instance.firebaseUser != null && !AuthService.instance.firebaseUser!.emailVerified) {
+        await AuthService.instance.sendEmailVerification();
+        await AuthService.instance.logout();
+        setState(() {
+          _isLoading = false;
+          _error = LocalizationService.translate('verify_email_subtitle', AppState.instance.language) ?? 'Please verify your email before logging in. A new link was sent.';
+        });
+      } else {
+        if (mounted) Navigator.pop(context); // Go back after login
+      }
     }
   }
 
@@ -95,7 +107,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 48),
+            SizedBox(height: 8),
+            // Forgot Password link
+            Align(
+              alignment: lang == 'Kurdish' ? Alignment.centerLeft : Alignment.centerRight,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()));
+                },
+                child: Text(
+                  LocalizationService.translate('forgot_password', lang),
+                  style: TextStyle(color: AppColors.accentGreen, fontSize: 13),
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
             GestureDetector(
               onTap: _isLoading ? null : _login,
               child: Container(

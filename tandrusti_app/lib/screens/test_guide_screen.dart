@@ -107,8 +107,14 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                     final docs = snapshot.data!.docs.where((doc) {
                       final data = doc.data() as Map<String, dynamic>;
                       final name = (data['testName'] ?? '').toString().toLowerCase();
+                      final cat = (data['category'] ?? '').toString();
+                      final transCatEn = LocalizationService.translate(cat, 'English').toLowerCase();
+                      final transCatKu = LocalizationService.translate(cat, 'Kurdish').toLowerCase();
+                      final transNameEn = LocalizationService.translate(data['testName'] ?? '', 'English').toLowerCase();
+                      final transNameKu = LocalizationService.translate(data['testName'] ?? '', 'Kurdish').toLowerCase();
+                      
                       final query = _searchQuery.toLowerCase();
-                      return name.contains(query);
+                      return name.contains(query) || transCatEn.contains(query) || transCatKu.contains(query) || transNameEn.contains(query) || transNameKu.contains(query);
                     }).toList();
 
                     return ListView.builder(

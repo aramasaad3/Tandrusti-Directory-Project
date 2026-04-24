@@ -6,6 +6,9 @@ import 'firebase_options.dart';
 import 'services/app_state.dart';
 import 'services/auth_service.dart';
 import 'services/notification_service.dart';
+import 'services/favorites_service.dart';
+import 'services/reminders_service.dart';
+import 'services/seed_data_service.dart';
 import 'screens/home_screen.dart';
 import 'screens/alarm_screen.dart';
 
@@ -57,6 +60,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  try {
+    await SeedDataService.uploadInitialData();
+  } catch (e) {
+    debugPrint("Seed Data Error: $e");
+  }
+
   await NotificationService.init();
   await AppState.instance.loadFavorites();
   await AuthService.instance.init();
@@ -92,15 +101,9 @@ class TandrustiApp extends StatelessWidget {
           title: 'Tandrusti',
           debugShowCheckedModeBanner: false,
           builder: (context, child) {
-            final textScale = isKurdish ? 1.25 : 1.0;
             return Directionality(
               textDirection: isKurdish ? TextDirection.rtl : TextDirection.ltr,
-              child: MediaQuery(
-                 data: MediaQuery.of(context).copyWith(
-                    textScaler: TextScaler.linear(textScale),
-                 ),
-                 child: child!,
-              ),
+              child: child!,
             );
           },
           themeMode: AppState.instance.isDarkMode ? ThemeMode.dark : ThemeMode.light,

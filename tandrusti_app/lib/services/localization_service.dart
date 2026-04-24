@@ -84,7 +84,11 @@ class LocalizationService {
       'alarm_time_to_take': 'Time to take your medicine!',
       'alarm_took_medicine': 'I Took My Medication',
       'sponsored': 'SPONSORED',
-      
+      'font_size': 'Font Size',
+      'font_small': 'Small',
+      'font_medium': 'Medium',
+      'font_large': 'Large',
+
       // Medicine/Test detail fallback strings
       'Medicine': 'Medicine',
       'Vitamin': 'Vitamin',
@@ -97,7 +101,7 @@ class LocalizationService {
       'No information provided.': 'No information provided.',
       'Unknown Test': 'Unknown Test',
       'Diagnostic': 'Diagnostic',
-      
+
       // Dynamic Cloud Data Translations (English -> English mapping to prevent key misses)
       'Erbil': 'Erbil',
       'Suleimani': 'Suleimani',
@@ -110,7 +114,7 @@ class LocalizationService {
       'Neurologist': 'Neurologist',
       'Pediatrician': 'Pediatrician',
       'Ophthalmologist': 'Ophthalmologist',
-      
+
       // Auth
       'login': 'Login',
       'login_subtitle': 'Welcome back! Please enter your details.',
@@ -120,6 +124,12 @@ class LocalizationService {
       'no_account': 'Don\'t have an account?',
       'register': 'Create Account',
       'register_subtitle': 'Join us to manage your health.',
+      'verify_phone': 'Verify Phone',
+      'verify_phone_subtitle': 'Please enter the 6-digit OTP code sent to',
+      'verify_code': 'Verify Code',
+      'edit_profile': 'Edit Profile',
+      'edit_profile_subtitle': 'Change your display name',
+      'confirm_password': 'Confirm Password',
       'full_name': 'Full Name',
       'register_btn': 'Sign Up',
       'has_account': 'Already have an account?',
@@ -136,15 +146,21 @@ class LocalizationService {
       'Specialty Unknown': 'Specialty Unknown',
 
       // Medical mock data fallback translations for En mode
-      'Take 500mg-1g every 6 hours as needed.': 'Take 500mg-1g every 6 hours as needed.',
-      'Complete the entire course without stopping.': 'Complete the entire course without stopping.',
-      'Take with food to minimize stomach side effects.': 'Take with food to minimize stomach side effects.',
+      'Take 500mg-1g every 6 hours as needed.':
+          'Take 500mg-1g every 6 hours as needed.',
+      'Complete the entire course without stopping.':
+          'Complete the entire course without stopping.',
+      'Take with food to minimize stomach side effects.':
+          'Take with food to minimize stomach side effects.',
       'Take once daily at the same time.': 'Take once daily at the same time.',
-      'Take 30 minutes before your first meal.': 'Take 30 minutes before your first meal.',
-      
-      'Liver damage if taken in extreme doses.': 'Liver damage if taken in extreme doses.',
+      'Take 30 minutes before your first meal.':
+          'Take 30 minutes before your first meal.',
+
+      'Liver damage if taken in extreme doses.':
+          'Liver damage if taken in extreme doses.',
       'Diarrhea, Nausea, Rash.': 'Diarrhea, Nausea, Rash.',
-      'Stomach upset, metallic taste in mouth.': 'Stomach upset, metallic taste in mouth.',
+      'Stomach upset, metallic taste in mouth.':
+          'Stomach upset, metallic taste in mouth.',
       'Muscle pain, joint pain.': 'Muscle pain, joint pain.',
       'Headache, Abdominal pain.': 'Headache, Abdominal pain.',
       'Dry cough, dizziness.': 'Dry cough, dizziness.',
@@ -152,20 +168,40 @@ class LocalizationService {
       'Blood Test': 'Blood Test',
       'Imaging': 'Imaging',
 
-      'Blood will be drawn from your arm; expect a small pinch.': 'Blood will be drawn from your arm; expect a small pinch.',
-      'Measures cholesterol levels to check heart health.': 'Measures cholesterol levels to check heart health.',
-      'Gel is applied to the abdomen; uses sound waves to see organs.': 'Gel is applied to the abdomen; uses sound waves to see organs.',
-      'Short exposure to radiation to image lungs and heart.': 'Short exposure to radiation to image lungs and heart.',
-      'Standard blood draw for diabetes monitoring.': 'Standard blood draw for diabetes monitoring.',
+      'Blood will be drawn from your arm; expect a small pinch.':
+          'Blood will be drawn from your arm; expect a small pinch.',
+      'Measures cholesterol levels to check heart health.':
+          'Measures cholesterol levels to check heart health.',
+      'Gel is applied to the abdomen; uses sound waves to see organs.':
+          'Gel is applied to the abdomen; uses sound waves to see organs.',
+      'Short exposure to radiation to image lungs and heart.':
+          'Short exposure to radiation to image lungs and heart.',
+      'Standard blood draw for diabetes monitoring.':
+          'Standard blood draw for diabetes monitoring.',
 
       'No fasting required': 'No fasting required',
       'You can eat and drink normally': 'You can eat and drink normally',
-      'Fasting 9-12 hours before test is Mandatory': 'Fasting 9-12 hours before test is Mandatory',
+      'Fasting 9-12 hours before test is Mandatory':
+          'Fasting 9-12 hours before test is Mandatory',
       'Fast for 8 hours': 'Fast for 8 hours',
-      'Drink water as directed by technician': 'Drink water as directed by technician',
+      'Drink water as directed by technician':
+          'Drink water as directed by technician',
       'Remove jewelry and glasses': 'Remove jewelry and glasses',
       'Wear a clinical gown': 'Wear a clinical gown',
-      'Shows average blood sugar for 3 months': 'Shows average blood sugar for 3 months',
+      'Shows average blood sugar for 3 months':
+          'Shows average blood sugar for 3 months',
+          
+      // Auth Errors
+      'err_user_not_found': 'No account detected on this email.',
+      'err_wrong_password': 'Incorrect email or password.',
+      'err_invalid_email': 'Invalid email format.',
+      'err_email_in_use': 'An account already exists for this email.',
+      'err_weak_password': 'Password is too weak (minimum 6 characters).',
+      'err_too_many_requests': 'Too many attempts. Try again later.',
+      'err_network': 'Network error. Please check your connection.',
+      'err_unknown': 'An error occurred. Please try again.',
+      'reset_email_sent': 'Reset Link Sent!',
+      'reset_email_sent_subtitle': 'If this email is registered, a password reset link has been sent. Please check your inbox and spam folder.',
     },
     'ku': {
       'app_title': 'تەندروستی',
@@ -221,14 +257,13 @@ class LocalizationService {
       'email_error': 'نەتوانرا ئەپی ئیمەیڵ بکرێتەوە',
       'app_subtitle': 'هاوڕێی تەندروستیت لە کوردستان',
       'directory_title': 'پزیشکەکان',
-      'open': 'کراوەیە',
-      'closed': 'داخراوە',
+
       'back': 'گەڕانەوە',
       'clinic_info': 'زانیاری کلینیک',
       'address': 'ناونیشان',
       'call_btn': 'پەیوەندیکردن',
       'report_incorrect': 'ڕاپۆرتکردنی زانیاری هەڵە',
-      'my_doctors': 'پزیشکە دڵخوازەکانم',
+      'my_doctors': 'پزیشکەکانم ',
       'saved': 'پاشەکەوتکراوە',
       'no_saved_doctors': 'پزیشکی زیاتر لە دایریکتۆرییەوە پاشەکەوت بکە',
       'saved_doctors': 'پزیشکی پاشەکەوتکراو',
@@ -251,7 +286,11 @@ class LocalizationService {
       'alarm_time_to_take': 'کاتی خواردنی دەرمانەکەتە!',
       'alarm_took_medicine': 'دەرمانەکەم خواردەوە',
       'sponsored': 'سپۆنسەرکراو',
-      
+      'font_size': 'قەبارەی فۆنت',
+      'font_small': 'بچووک',
+      'font_medium': 'ناوەند',
+      'font_large': 'گەورە',
+
       // Medicine/Test detail fallback strings
       'Medicine': 'دەرمان',
       'Vitamin': 'ڤیتامین',
@@ -260,7 +299,8 @@ class LocalizationService {
       'Refer to doctor': 'پەیوەندی بە پزیشکەوە بکە',
       'None recorded': 'هیچ تۆمار نەکراوە',
       'No Brands available': 'هیچ مارکەیەک بەردەست نییە',
-      'No specific preparation needed.': 'هیچ ئامادەکارییەکی تایبەت پێویست نییە.',
+      'No specific preparation needed.':
+          'هیچ ئامادەکارییەکی تایبەت پێویست نییە.',
       'No information provided.': 'هیچ زانیارییەک نەدراوە.',
       'Unknown Test': 'پشکنینی نەناسراو',
       'Diagnostic': 'پشکنینی',
@@ -277,7 +317,7 @@ class LocalizationService {
       'Neurologist': 'پزیشکی دەمار',
       'Pediatrician': 'پزیشکی منداڵان',
       'Ophthalmologist': 'پزیشکی چاو',
-      
+
       // Auth
       'login': 'چوونە ژوورەوە',
       'login_subtitle': 'بەخێربێیتەوە! تکایە زانیارییەکانت بنووسە.',
@@ -287,6 +327,12 @@ class LocalizationService {
       'no_account': 'هەژمارت نییە؟',
       'register': 'دروستکردنی هەژمار',
       'register_subtitle': 'پەیوەندیمان پێوە بکە بۆ بەڕێوەبردنی تەندروستیت.',
+      'verify_phone': 'دڵنیاکردنەوەی تەلەفۆن',
+      'verify_phone_subtitle': 'تکایە ئەو کۆدەی ٦ ژمارەییە بنووسە کە نێردراوە بۆ',
+      'verify_code': 'پشتڕاستکردنەوەی کۆد',
+      'edit_profile': 'دەستکاریکردنی پڕۆفایل',
+      'edit_profile_subtitle': 'ناوی سەر شاشەکەت بگۆڕە',
+      'confirm_password': 'پشتڕاستکردنەوەی وشەی نهێنی',
       'full_name': 'ناوی تەواو',
       'register_btn': 'خۆتۆمارکردن',
       'has_account': 'پێشتر هەژمارت هەیە؟',
@@ -303,16 +349,23 @@ class LocalizationService {
       'Specialty Unknown': 'پسپۆڕی نەزانراوە',
 
       // Medical mock data fallback translations (English -> Kurdish)
-      'Take 500mg-1g every 6 hours as needed.': '٥٠٠مگم نزیکەی ١گم هەموو ٦ کاتژمێرێک بەپێی پێویست وەربگرە.',
-      'Take 500mg - 1g every 6 hours as needed.': '٥٠٠مگم نزیکەی ١گم هەموو ٦ کاتژمێرێک بەپێی پێویست وەربگرە.', // Handle variant
-      'Complete the entire course without stopping.': 'تەواوی کۆرسەکە بەبێ وەستان تەواو بکە.',
-      'Take with food to minimize stomach side effects.': 'لەگەڵ خواردن بیخۆ بۆ کەمکردنەوەی کاریگەرییە لاوەکییەکانی گەدە.',
-      'Take once daily at the same time.': 'تەنها یەکجار لە ڕۆژێکدا لە هەمان کاتدا بیخۆ.',
+      'Take 500mg-1g every 6 hours as needed.':
+          '٥٠٠مگم نزیکەی ١گم هەموو ٦ کاتژمێرێک بەپێی پێویست وەربگرە.',
+      'Take 500mg - 1g every 6 hours as needed.':
+          '٥٠٠مگم نزیکەی ١گم هەموو ٦ کاتژمێرێک بەپێی پێویست وەربگرە.', // Handle variant
+      'Complete the entire course without stopping.':
+          'تەواوی کۆرسەکە بەبێ وەستان تەواو بکە.',
+      'Take with food to minimize stomach side effects.':
+          'لەگەڵ خواردن بیخۆ بۆ کەمکردنەوەی کاریگەرییە لاوەکییەکانی گەدە.',
+      'Take once daily at the same time.':
+          'تەنها یەکجار لە ڕۆژێکدا لە هەمان کاتدا بیخۆ.',
       'Take 30 minutes before your first meal.': '٣٠ خولەک پێش یەکەم ژەم بیخۆ.',
-      
-      'Liver damage if taken in extreme doses.': 'زیان بە جگەر دەگەیەنێت ئەگەر بەرێژەیەکی زۆر بەکاربهێنرێت.',
+
+      'Liver damage if taken in extreme doses.':
+          'زیان بە جگەر دەگەیەنێت ئەگەر بەرێژەیەکی زۆر بەکاربهێنرێت.',
       'Diarrhea, Nausea, Rash.': 'سکچوون، دڵتێکەڵهاتن، پەڵەی پێست.',
-      'Stomach upset, metallic taste in mouth.': 'تێکچوونی گەدە، تامی ئاسن لە دەمدا.',
+      'Stomach upset, metallic taste in mouth.':
+          'تێکچوونی گەدە، تامی ئاسن لە دەمدا.',
       'Muscle pain, joint pain.': 'ئازاری ماسولکە، ئازاری جومگە.',
       'Headache, Abdominal pain.': 'سەرئێشە، ئازاری سک.',
       'Dry cough, dizziness.': 'کۆکەی وشک، سەرگێژخواردن.',
@@ -320,20 +373,41 @@ class LocalizationService {
       'Blood Test': 'پشکنینی خوێن',
       'Imaging': 'وێنەگرتن',
 
-      'Blood will be drawn from your arm; expect a small pinch.': 'خوێن لە قۆڵت وەردەگیرێت، پێشبینی کەمێک ئازار بکە.',
-      'Measures cholesterol levels to check heart health.': 'ئاستی کۆلیسترۆڵ دەپێوێت بۆ پشکنینی تەندروستی دڵ.',
-      'Gel is applied to the abdomen; uses sound waves to see organs.': 'جێڵ دەدرێت لە سک؛ شەپۆلی دەنگ بەکاردەهێنێت بۆ بینینی ئەندامەکان.',
-      'Short exposure to radiation to image lungs and heart.': 'بەرکەوتنی کورت بە تیشک بۆ وێنەگرتنی سییەکان و دڵ.',
-      'Standard blood draw for diabetes monitoring.': 'وەرگرتنی خوێنی ئاسایی بۆ چاودێریکردنی نەخۆشی شەکرە.',
+      'Blood will be drawn from your arm; expect a small pinch.':
+          'خوێن لە قۆڵت وەردەگیرێت، پێشبینی کەمێک ئازار بکە.',
+      'Measures cholesterol levels to check heart health.':
+          'ئاستی کۆلیسترۆڵ دەپێوێت بۆ پشکنینی تەندروستی دڵ.',
+      'Gel is applied to the abdomen; uses sound waves to see organs.':
+          'جێڵ دەدرێت لە سک؛ شەپۆلی دەنگ بەکاردەهێنێت بۆ بینینی ئەندامەکان.',
+      'Short exposure to radiation to image lungs and heart.':
+          'بەرکەوتنی کورت بە تیشک بۆ وێنەگرتنی سییەکان و دڵ.',
+      'Standard blood draw for diabetes monitoring.':
+          'وەرگرتنی خوێنی ئاسایی بۆ چاودێریکردنی نەخۆشی شەکرە.',
 
       'No fasting required': 'پێویست بە بەرۆژووبوون ناکات',
-      'You can eat and drink normally': 'دەتوانیت بە شێوەیەکی ئاسایی نان و ئاو بخۆیت',
-      'Fasting 9-12 hours before test is Mandatory': 'بەرۆژووبوون بۆ ماوەی ٩-١٢ کاتژمێر پێش پشکنین زۆر پێویستە',
+      'You can eat and drink normally':
+          'دەتوانیت بە شێوەیەکی ئاسایی نان و ئاو بخۆیت',
+      'Fasting 9-12 hours before test is Mandatory':
+          'بەرۆژووبوون بۆ ماوەی ٩-١٢ کاتژمێر پێش پشکنین زۆر پێویستە',
       'Fast for 8 hours': 'بۆ ماوەی ٨ کاتژمێر بەرۆژووبە',
-      'Drink water as directed by technician': 'ئاو بخۆرەوە وەک ئەوەی لەلایەن شارەزایەکەوە پێڕاگەیندراوە',
+      'Drink water as directed by technician':
+          'ئاو بخۆرەوە وەک ئەوەی لەلایەن شارەزایەکەوە پێڕاگەیندراوە',
       'Remove jewelry and glasses': 'زێڕ و چاویلکە دابنێ',
       'Wear a clinical gown': 'کەوای پزیشکی لەبەر بکە',
-      'Shows average blood sugar for 3 months': 'ڕێژەی مامناوەندی شەکری خوێن بۆ ماوەی ٣ مانگ نیشان دەدات',
+      'Shows average blood sugar for 3 months':
+          'ڕێژەی مامناوەندی شەکری خوێن بۆ ماوەی ٣ مانگ نیشان دەدات',
+
+      // Auth Errors
+      'err_user_not_found': 'هیچ هەژمارێک بەم ئیمەیڵە نەدۆزرایەوە.',
+      'err_wrong_password': 'ئیمەیڵ یان وشەی نهێنی هەڵەیە.',
+      'err_invalid_email': 'فۆرماتی ئیمەیڵەکە هەڵەیە.',
+      'err_email_in_use': 'هەژمارێک پێشتر بەم ئیمەیڵە دروست کراوە.',
+      'err_weak_password': 'وشەی نهێنی زۆر لاوازە (لانی کەم ٦ پیت پێویستە).',
+      'err_too_many_requests': 'هەوڵی زۆر دراوە. تکایە دواتر هەوڵ بدەرەوە.',
+      'err_network': 'کێشەی هێڵ هەیە. تکایە هێڵی ئینتەرنێتەکەت بپشکنە.',
+      'err_unknown': 'کێشەیەک ڕوویدا. تکایە دووبارە هەوڵ بدەرەوە.',
+      'reset_email_sent': 'لینکەکە نێردرا!',
+      'reset_email_sent_subtitle': 'ئەگەر ئەم ئیمەیڵە تۆمارکراو بێت، لینکێکی گۆڕینی وشەی نهێنی نێردراوە. تکایە سندوقی ئیمەیڵ و سپامەکەت بپشکنە.',
     },
   };
 

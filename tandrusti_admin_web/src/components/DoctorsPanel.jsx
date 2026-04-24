@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
-import { Edit2, Trash2, X, Save, Plus } from 'lucide-react';
+import { Edit2, Trash2, X, Save, Plus, MapPin } from 'lucide-react';
+import MapPicker from './MapPicker';
 
 export default function DoctorsPanel() {
   const [doctors, setDoctors] = useState([]);
@@ -11,8 +12,8 @@ export default function DoctorsPanel() {
   
   // Form State
   const [formData, setFormData] = useState({
-    name: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', 
-    workingHours: '', rating: 5.0, latitude: 0, longitude: 0
+    name: '', nameKu: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', 
+    latitude: 0, longitude: 0
   });
 
   const fetchDoctors = async () => {
@@ -36,12 +37,11 @@ export default function DoctorsPanel() {
     setIsAdding(false);
     setFormData({
       name: docInfo.name || '',
+      nameKu: docInfo.nameKu || '',
       specialty: docInfo.specialty || '',
       city: docInfo.city || '',
       phoneNumber: docInfo.phoneNumber || '',
       clinicLocation: docInfo.clinicLocation || '',
-      workingHours: docInfo.workingHours || '',
-      rating: docInfo.rating || 5.0,
       latitude: docInfo.latitude || 0,
       longitude: docInfo.longitude || 0,
     });
@@ -59,13 +59,14 @@ export default function DoctorsPanel() {
     try {
       const payload = {
         ...formData,
-        rating: parseFloat(formData.rating),
         latitude: parseFloat(formData.latitude),
         longitude: parseFloat(formData.longitude),
       };
 
       if (isAdding) {
-        await addDoc(collection(db, 'doctors'), payload);
+        const cleanId = `d_${Date.now()}`;
+        const { setDoc, doc: firestoreDoc } = await import('firebase/firestore');
+        await setDoc(firestoreDoc(db, 'doctors', cleanId), payload);
       } else if (editingId) {
         await updateDoc(doc(db, 'doctors', editingId), payload);
       }
@@ -78,10 +79,32 @@ export default function DoctorsPanel() {
     }
   };
 
+  const handlePhoneChange = (e) => {
+    let val = e.target.value;
+    // Keep only digits
+    let numbers = val.replace(/\D/g, '');
+    
+    // Strip leading country codes or zeros to get the core 10 digits
+    if (numbers.startsWith('964')) numbers = numbers.substring(3);
+    else if (numbers.startsWith('0')) numbers = numbers.substring(1);
+    
+    let formatted = '+964';
+    if (numbers.length > 0) formatted += ' ' + numbers.substring(0, 3);
+    if (numbers.length > 3) formatted += ' ' + numbers.substring(3, 6);
+    if (numbers.length > 6) formatted += ' ' + numbers.substring(6, 10);
+
+    // Allow user to clear the input
+    if (val === '' || val === '+') {
+      setFormData({...formData, phoneNumber: val});
+    } else {
+      setFormData({...formData, phoneNumber: formatted});
+    }
+  };
+
   const resetForm = () => {
     setFormData({
-      name: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', 
-      workingHours: '', rating: 5.0, latitude: 0, longitude: 0
+      name: '', nameKu: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', 
+      latitude: 0, longitude: 0
     });
     setEditingId(null);
     setIsAdding(false);
@@ -93,7 +116,7 @@ export default function DoctorsPanel() {
         <h3 className="text-xl font-bold">Doctors Directory</h3>
         {!isAdding && !editingId && (
           <button 
-            onClick={() => { setIsAdding(true); setFormData({name: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', workingHours: '', rating: 5.0, latitude: 0, longitude: 0}); }}
+            onClick={() => { setIsAdding(true); setFormData({name: '', nameKu: '', specialty: '', city: '', phoneNumber: '', clinicLocation: '', latitude: 0, longitude: 0}); }}
             className="flex items-center bg-primary hover:bg-primaryDark text-white px-4 py-2 rounded-lg font-medium transition-colors"
           >
             <Plus className="w-5 h-5 mr-2" /> Add New Doctor
@@ -115,8 +138,12 @@ export default function DoctorsPanel() {
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold mb-1">Name</label>
+              <label className="block text-sm font-semibold mb-1">Name (English)</label>
               <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" placeholder="e.g. Dr. Alan Kurdi" />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold mb-1">Name (Kurdish)</label>
+              <input value={formData.nameKu} onChange={e => setFormData({...formData, nameKu: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none text-right" placeholder="e.g. د. ئالان کوردی" dir="rtl" />
             </div>
             <div>
               <label className="block text-sm font-semibold mb-1">Specialty</label>
@@ -128,28 +155,31 @@ export default function DoctorsPanel() {
             </div>
             <div>
               <label className="block text-sm font-semibold mb-1">Phone Number</label>
-              <input required value={formData.phoneNumber} onChange={e => setFormData({...formData, phoneNumber: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" placeholder="+964..." />
+              <input required value={formData.phoneNumber} onChange={handlePhoneChange} className="w-full border p-2 rounded focus:ring-2 outline-none" placeholder="+964 750 000 0000" maxLength="17" />
             </div>
             <div className="col-span-2">
               <label className="block text-sm font-semibold mb-1">Clinic Location</label>
               <input required value={formData.clinicLocation} onChange={e => setFormData({...formData, clinicLocation: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" placeholder="100 Meter Road..." />
             </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1">Working Hours</label>
-              <input required value={formData.workingHours} onChange={e => setFormData({...formData, workingHours: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" placeholder="e.g. 4:00 PM - 8:00 PM" />
             </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1">Rating</label>
-              <input required type="number" step="0.1" value={formData.rating} onChange={e => setFormData({...formData, rating: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1">Latitude</label>
-              <input required type="number" step="0.000001" value={formData.latitude} onChange={e => setFormData({...formData, latitude: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1">Longitude</label>
-              <input required type="number" step="0.000001" value={formData.longitude} onChange={e => setFormData({...formData, longitude: e.target.value})} className="w-full border p-2 rounded focus:ring-2 outline-none" />
-            </div>
+            
+          {/* Map Picker */}
+          <div className="mt-4">
+            <label className="flex items-center gap-2 text-sm font-semibold mb-1">
+              <MapPin className="w-4 h-4 text-primary" />
+              Clinic Location on Map
+              <span className="text-textMuted font-normal">(click on the map to set location)</span>
+            </label>
+            {formData.latitude !== 0 && (
+              <p className="text-xs text-textMuted mb-1">
+                Selected: {parseFloat(formData.latitude).toFixed(6)}, {parseFloat(formData.longitude).toFixed(6)}
+              </p>
+            )}
+            <MapPicker
+              lat={parseFloat(formData.latitude) || 0}
+              lng={parseFloat(formData.longitude) || 0}
+              onLocationSelect={(lat, lng) => setFormData({ ...formData, latitude: lat, longitude: lng })}
+            />
           </div>
           <button type="submit" className="mt-6 flex items-center bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-primaryDark transition-colors">
             <Save className="w-5 h-5 mr-2" /> Save Doctor
@@ -163,7 +193,8 @@ export default function DoctorsPanel() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-background border-b border-borderLight text-textMuted uppercase text-xs">
-                <th className="p-4 font-semibold">Name</th>
+                <th className="p-4 font-semibold">Name (English)</th>
+                <th className="p-4 font-semibold">Name (Kurdish)</th>
                 <th className="p-4 font-semibold">Specialty</th>
                 <th className="p-4 font-semibold">City</th>
                 <th className="p-4 font-semibold">Phone</th>
@@ -174,6 +205,7 @@ export default function DoctorsPanel() {
               {doctors.map(doc => (
                 <tr key={doc.id} className="border-b border-borderLight hover:bg-background transition-colors">
                   <td className="p-4 font-medium">{doc.name}</td>
+                  <td className="p-4 font-medium text-right" dir="rtl">{doc.nameKu || '-'}</td>
                   <td className="p-4 text-sm text-textMuted">{doc.specialty}</td>
                   <td className="p-4 text-sm">{doc.city}</td>
                   <td className="p-4 text-sm">{doc.phoneNumber}</td>

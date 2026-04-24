@@ -11,29 +11,6 @@ class DoctorDetailScreen extends StatelessWidget {
 
   const DoctorDetailScreen({super.key, required this.doctorId, required this.doctorData});
 
-  bool _isOpen(String hoursString) {
-    if (hoursString.toLowerCase().contains('24/7')) return true;
-    try {
-      final now = DateTime.now();
-      final currentHour = now.hour;
-      final parts = hoursString.split('-');
-      if (parts.length == 2) {
-        int start = int.parse(parts[0].replaceAll(RegExp(r'[^0-9]'), ''));
-        int end = int.parse(parts[1].replaceAll(RegExp(r'[^0-9]'), ''));
-
-        if (parts[0].toLowerCase().contains('pm') && start != 12) start += 12;
-        if (parts[1].toLowerCase().contains('pm') && end != 12) end += 12;
-
-        if (end < start) {
-           return currentHour >= start || currentHour < end;
-        }
-        return currentHour >= start && currentHour < end;
-      }
-    } catch (_) {
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -42,16 +19,16 @@ class DoctorDetailScreen extends StatelessWidget {
         final lang = AppState.instance.language;
         final isFav = AppState.instance.isDocFavorite(doctorId);
 
-        final doctorName = doctorData['name'] ?? 'Unknown Doctor';
+        final String baseName = doctorData['name'] ?? 'Unknown Doctor';
+        final String kName = doctorData['nameKu'] ?? '';
+        final doctorName = (lang == 'Kurdish' && kName.isNotEmpty) ? kName : baseName;
         final rawSpecialty = doctorData['specialty'] ?? 'Specialty Unknown';
         final doctorSpecialty = LocalizationService.translate(rawSpecialty, lang);
         final doctorLocation = doctorData['clinicLocation'] ?? 'Location Unknown';
         final doctorCity = LocalizationService.translate(doctorData['city'] ?? 'Erbil', lang);
         final doctorPhone = doctorData['phoneNumber'] ?? '+964 000 000 0000';
-        final doctorHours = doctorData['workingHours'] ?? '9:00 AM - 5:00 PM';
         final lat = doctorData['latitude']?.toDouble() ?? 36.190;
         final lng = doctorData['longitude']?.toDouble() ?? 43.993;
-        final isOpen = _isOpen(doctorHours);
 
         return Scaffold(
           backgroundColor: AppColors.background,
@@ -123,22 +100,6 @@ class DoctorDetailScreen extends StatelessWidget {
                               Text(doctorName, style: TextStyle(color: AppColors.white, fontSize: 24, fontWeight: FontWeight.bold)),
                               SizedBox(height: 4),
                               Text(doctorSpecialty, style: TextStyle(color: AppColors.white.withOpacity(0.8), fontSize: 16)),
-                              SizedBox(height: 8),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: isOpen ? AppColors.white.withOpacity(0.2) : AppColors.redSoft,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Text(
-                                  isOpen ? LocalizationService.translate('open', lang) : LocalizationService.translate('closed', lang),
-                                  style: TextStyle(
-                                     color: isOpen ? AppColors.white : AppColors.red, 
-                                     fontSize: 12, 
-                                     fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              )
                             ],
                           ),
                         ),
@@ -205,7 +166,11 @@ class DoctorDetailScreen extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(LocalizationService.translate('phone', lang), style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-                                      Text(doctorPhone, style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 14)),
+                                      Text(
+                                        '\u200E$doctorPhone',
+                                        textDirection: TextDirection.ltr,
+                                        style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 14),
+                                      ),
                                     ],
                                   ),
                                 ),

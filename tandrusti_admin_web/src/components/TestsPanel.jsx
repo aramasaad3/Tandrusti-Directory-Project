@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, setDoc, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { Edit2, Trash2, X, Save, Plus } from 'lucide-react';
 
 export default function TestsPanel() {
@@ -58,7 +58,8 @@ export default function TestsPanel() {
     e.preventDefault();
     try {
       if (isAdding) {
-        await addDoc(collection(db, 'tests'), formData);
+        const cleanId = `t_${Date.now()}`;
+        await setDoc(doc(db, 'tests', cleanId), formData);
       } else if (editingId) {
         await updateDoc(doc(db, 'tests', editingId), formData);
       }

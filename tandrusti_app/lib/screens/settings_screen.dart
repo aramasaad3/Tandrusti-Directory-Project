@@ -3,6 +3,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../services/app_state.dart';
 import '../services/localization_service.dart';
+import '../services/auth_service.dart';
+import 'edit_profile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -99,6 +101,26 @@ class SettingsScreen extends StatelessWidget {
                           ),
                         )
                       ),
+                      if (AuthService.instance.currentUser != null) ...[
+                        Divider(height: 1, color: AppColors.filterInactive),
+                        ListTile(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          leading: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppColors.accentGreenSoft,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(Icons.person, color: AppColors.accentGreen, size: 20),
+                          ),
+                          title: Text(LocalizationService.translate('edit_profile', lang), style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600)),
+                          subtitle: Text(LocalizationService.translate('edit_profile_subtitle', lang), style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+                          trailing: Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.textSecondary),
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => const EditProfileScreen()));
+                          },
+                        ),
+                      ],
                     ],
                   ),
                 ),

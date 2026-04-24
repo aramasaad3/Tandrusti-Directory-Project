@@ -24,18 +24,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _isLoading = true;
       _error = null;
     });
+
     final err = await AuthService.instance.signUp(
       name: _nameCtrl.text.trim(),
       email: _emailCtrl.text.trim(),
       password: _passCtrl.text,
     );
+
     if (err != null) {
+      final lang = AppState.instance.language;
       setState(() {
         _isLoading = false;
-        _error = err;
+        _error = LocalizationService.translate(err, lang);
       });
-    } else {
-      if (mounted) Navigator.pop(context); // Go back after success
+      return;
+    }
+
+    // Send Email Verification
+    await AuthService.instance.sendEmailVerification();
+    setState(() {
+      _isLoading = false;
+    });
+    
+    if (mounted) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: AppColors.surface,
+          title: Text(LocalizationService.translate('verify_email', AppState.instance.language), style: TextStyle(color: AppColors.textPrimary)),
+          content: Text(LocalizationService.translate('verify_email_subtitle', AppState.instance.language), style: TextStyle(color: AppColors.textSecondary)),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+                Navigator.pop(context);
+              },
+              child: Text('OK', style: TextStyle(color: AppColors.accentGreen)),
+            )
+          ],
+        )
+      );
     }
   }
 

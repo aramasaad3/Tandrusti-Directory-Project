@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, setDoc, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { Edit2, Trash2, X, Save, Plus } from 'lucide-react';
 
 export default function MedicinesPanel() {
@@ -75,7 +75,8 @@ export default function MedicinesPanel() {
       };
 
       if (isAdding) {
-        await addDoc(collection(db, 'medicines'), payload);
+        const cleanId = `m_${Date.now()}`;
+        await setDoc(doc(db, 'medicines', cleanId), payload);
       } else if (editingId) {
         await updateDoc(doc(db, 'medicines', editingId), payload);
       }

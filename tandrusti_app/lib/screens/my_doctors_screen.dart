@@ -9,29 +9,6 @@ import 'doctor_detail_screen.dart';
 class MyDoctorsScreen extends StatelessWidget {
   const MyDoctorsScreen({super.key});
 
-  bool _isOpen(String hoursString) {
-    if (hoursString.toLowerCase().contains('24/7')) return true;
-    try {
-      final now = DateTime.now();
-      final currentHour = now.hour;
-      final parts = hoursString.split('-');
-      if (parts.length == 2) {
-        int start = int.parse(parts[0].replaceAll(RegExp(r'[^0-9]'), ''));
-        int end = int.parse(parts[1].replaceAll(RegExp(r'[^0-9]'), ''));
-
-        if (parts[0].toLowerCase().contains('pm') && start != 12) start += 12;
-        if (parts[1].toLowerCase().contains('pm') && end != 12) end += 12;
-
-        if (end < start) {
-           return currentHour >= start || currentHour < end;
-        }
-        return currentHour >= start && currentHour < end;
-      }
-    } catch (_) {
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -109,8 +86,6 @@ class MyDoctorsScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final docId = docs[index].id;
                           final data = docs[index].data() as Map<String, dynamic>;
-                          final doctorHours = data['workingHours'] ?? 'Hours Unknown';
-                          final isOpen = _isOpen(doctorHours);
 
                           return GestureDetector(
                             onTap: () {
@@ -122,7 +97,6 @@ class MyDoctorsScreen extends StatelessWidget {
                             child: DoctorCard(
                               data: data,
                               lang: lang,
-                              isOpen: isOpen,
                             )
                           );
                         },

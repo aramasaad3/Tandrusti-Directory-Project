@@ -115,5 +115,11 @@ class AppState extends ChangeNotifier {
   bool isDocFavorite(String id) => _favDoctors.contains(id);
   bool isMedFavorite(String id) => _favMedicines.contains(id);
 
+  void clearFavorites() {
+    _favDoctors = [];
+    _favMedicines = [];
+    notifyListeners();
+  }
+
   static final AppState instance = AppState._internal();
 }

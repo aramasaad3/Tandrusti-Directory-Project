@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'app_state.dart';
 
 class UserModel {
   final String uid;
@@ -47,8 +48,12 @@ class AuthService extends ChangeNotifier {
     _auth.authStateChanges().listen((user) async {
       if (user != null) {
         await _fetchUser(user.uid);
+        // Reload favorites from Firestore for this account
+        await AppState.instance.loadFavorites();
       } else {
         currentUser = null;
+        // Clear favorites from memory on logout
+        AppState.instance.clearFavorites();
         notifyListeners();
       }
     });
@@ -63,6 +68,29 @@ class AuthService extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       debugPrint("Error fetching user: $e");
+    }
+  }
+
+  // Returns a translatable error key (not the translated string)
+  String _getErrorCode(String code) {
+    switch (code) {
+      case 'user-not-found':
+        return 'err_user_not_found';
+      case 'wrong-password':
+      case 'invalid-credential':
+        return 'err_wrong_password';
+      case 'invalid-email':
+        return 'err_invalid_email';
+      case 'email-already-in-use':
+        return 'err_email_in_use';
+      case 'weak-password':
+        return 'err_weak_password';
+      case 'too-many-requests':
+        return 'err_too_many_requests';
+      case 'network-request-failed':
+        return 'err_network';
+      default:
+        return 'err_unknown';
     }
   }
 
@@ -85,15 +113,14 @@ class AuthService extends ChangeNotifier {
           'role': 'user',
           'createdAt': FieldValue.serverTimestamp(),
         });
-        
         await _fetchUser(cred.user!.uid);
         return null; // Success
       }
-      return "Signup failed.";
+      return 'err_unknown';
     } on auth.FirebaseAuthException catch (e) {
-      return e.message ?? "An error occurred during signup.";
+      return _getErrorCode(e.code);
     } catch (e) {
-      return e.toString();
+      return 'err_unknown';
     }
   }
 
@@ -110,15 +137,72 @@ class AuthService extends ChangeNotifier {
         await _fetchUser(cred.user!.uid);
         return null; // Success
       }
-      return "Login failed.";
+      return 'err_unknown';
     } on auth.FirebaseAuthException catch (e) {
-      return e.message ?? "An error occurred during login.";
+      return _getErrorCode(e.code);
     } catch (e) {
-      return e.toString();
+      return 'err_unknown';
     }
   }
 
   Future<void> logout() async {
     await _auth.signOut();
+  }
+
+  Future<String?> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email.trim());
+      return null;
+    } on auth.FirebaseAuthException catch (e) {
+      return _getErrorCode(e.code);
+    } catch (e) {
+      return 'err_unknown';
+    }
+  }
+
+
+  Future<String?> sendEmailVerification() async {
+    try {
+      if (_auth.currentUser != null && !_auth.currentUser!.emailVerified) {
+        await _auth.currentUser!.sendEmailVerification();
+        return null;
+      }
+      return "User not found or already verified.";
+    } on auth.FirebaseAuthException catch (e) {
+      return e.message ?? 'Failed to send verification email.';
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
+
+  Future<String?> updateDisplayName({required String newName, required String password}) async {
+    try {
+      final user = _auth.currentUser;
+      if (user == null || user.email == null) return "No user logged in.";
+
+      // Re-authenticate
+      final cred = auth.EmailAuthProvider.credential(
+        email: user.email!,
+        password: password,
+      );
+      await user.reauthenticateWithCredential(cred);
+
+      // Update in Firestore
+      await _firestore.collection('users').doc(user.uid).update({
+        'displayName': newName.trim(),
+      });
+      
+      // Update locally
+      await _fetchUser(user.uid);
+      return null; // Success
+    } on auth.FirebaseAuthException catch (e) {
+      if (e.code == 'wrong-password' || e.code == 'invalid-credential') {
+        return 'Incorrect password.';
+      }
+      return e.message ?? 'Failed to update profile.';
+    } catch (e) {
+      return e.toString();
+    }
   }
 }

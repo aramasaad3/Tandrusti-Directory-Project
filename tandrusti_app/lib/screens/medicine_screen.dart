@@ -108,8 +108,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
                       final data = doc.data() as Map<String, dynamic>;
                       final name = (data['scientificName'] ?? '').toString().toLowerCase();
                       final brands = (data['commonBrands'] as List<dynamic>?)?.join(' ').toLowerCase() ?? '';
+                      final cat = (data['category'] ?? '').toString();
+                      final transCatEn = LocalizationService.translate(cat, 'English').toLowerCase();
+                      final transCatKu = LocalizationService.translate(cat, 'Kurdish').toLowerCase();
+                      
                       final query = _searchQuery.toLowerCase();
-                      return name.contains(query) || brands.contains(query);
+                      return name.contains(query) || brands.contains(query) || transCatEn.contains(query) || transCatKu.contains(query);
                     }).toList();
 
                     return ListView.builder(

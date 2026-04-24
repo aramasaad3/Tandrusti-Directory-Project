@@ -5,18 +5,18 @@ import '../services/localization_service.dart';
 class DoctorCard extends StatelessWidget {
   final Map<String, dynamic> data;
   final String lang;
-  final bool isOpen;
 
   const DoctorCard({
     super.key,
     required this.data,
     required this.lang,
-    required this.isOpen,
   });
 
   @override
   Widget build(BuildContext context) {
-    final doctorName = data['name'] ?? 'Unknown Doctor';
+    final String baseName = data['name'] ?? 'Unknown Doctor';
+    final String kName = data['nameKu'] ?? '';
+    final doctorName = (lang == 'Kurdish' && kName.isNotEmpty) ? kName : baseName;
     String rawSpecialty = data['specialty'] ?? 'Specialty Unknown';
     String rawCity = data['city'] ?? 'Erbil';
     
@@ -66,24 +66,6 @@ class DoctorCard extends StatelessWidget {
                 )
               ],
             ),
-          ),
-          Container(
-             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-             decoration: BoxDecoration(
-                color: isOpen ? AppColors.accentGreenSoft : AppColors.redSoft,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: isOpen ? AppColors.accentGreen.withOpacity(0.3) : AppColors.red.withOpacity(0.3)
-                )
-             ),
-             child: Text(
-                isOpen ? LocalizationService.translate('open', lang) : LocalizationService.translate('closed', lang),
-                style: TextStyle(
-                   color: isOpen ? AppColors.accentGreen : AppColors.red,
-                   fontSize: 11,
-                   fontWeight: FontWeight.bold
-                ),
-             )
           )
         ],
       ),

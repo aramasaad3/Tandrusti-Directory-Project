@@ -295,20 +295,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   
-                  // Dot Indicators for the slider
-                  SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(sponsors.length, (index) => Container(
-                      margin: EdgeInsets.symmetric(horizontal: 4),
-                      width: 8, height: 8,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _currentSponsorPage == index ? AppColors.accentGreen : AppColors.borderTertiary,
-                      ),
-                    )),
-                  ),
-
                   SizedBox(height: 24),
 
                   // 2x2 Feature Grid
