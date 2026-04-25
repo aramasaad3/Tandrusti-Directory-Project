@@ -15,7 +15,7 @@ This document details the step-by-step technical and operational implementation 
 
 ### 1.2 Version Control & Project Management
 - **Repository Setup**: Initialize a Git repository (GitHub/GitLab) with standard branches (`main`, `develop`, `feature/*`).
-- **Trello Setup**: Map out the agile boards based on the 4 Sprints, assigning specific cards to Frontend (Aram Asaad), Backend (Mustafa Muhamad), and QA (Rami Ahmed).
+- **Trello Setup**: Map out the agile boards based on the 4 Sprints, assigning specific cards to Frontend (Bashar Bahjat), Backend (Mustafa Muhamad), and QA (Rami Ahmed).
 
 ### 1.3 Technical Environment Initialization
 - **Flutter Framework Initialization**: Create the base Flutter project using consistent architecture (e.g., MVVM, Riverpod, or BLoC).
@@ -102,7 +102,7 @@ Define NoSQL collections strictly (mock schema planning):
 ### 6.2 Pre-Release & Academic Deliverables
 - Generate final APK/AAB and iOS IPA files.
 - Aggregate all documentation (SRS, Architecture diagrams, Implementation Plan).
-- Final review by Project Manager (Bashar Bahjat) and Academic Supervisor (Omer Tariq).
+- Final review by Project Manager (Aram Asaad) and Academic Supervisor (Omer Tariq).
 
 ### 6.3 Maintenance Pipeline
 - Distribute app via side-loading or test environments (TestFlight for Apple, Internal track for Google Play).

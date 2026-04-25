@@ -4,9 +4,9 @@
 **Date:** March 28, 2026  
 **Prepared For:** Omer Tariq (Salahuddin University - Erbil)  
 **Prepared By:**  
-- Bashar Bahjat (Project Manager)  
+- Aram Asaad (Project Manager)  
 - Ameen Abubakr (UI/UX Designer)  
-- Aram Asaad (Frontend Developer)  
+- Bashar Bahjat (Frontend Developer)  
 - Mustafa Muhamad (Backend Developer)  
 - Rami Ahmed (QA Engineer)  
 
