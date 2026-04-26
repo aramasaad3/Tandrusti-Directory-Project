@@ -39,10 +39,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 8, left: 20, right: 20, bottom: 30),
+      padding: const EdgeInsets.only(top: 8, left: 20, right: 20, bottom: 30),
       decoration: BoxDecoration(
         color: AppColors.background,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32)),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -50,7 +50,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
         children: [
           Center(
             child: Container(
-              margin: EdgeInsets.only(bottom: 24),
+              margin: const EdgeInsets.only(bottom: 24),
               width: 40,
               height: 4,
               decoration: BoxDecoration(
@@ -63,7 +63,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             LocalizationService.translate('specialty', widget.lang).toUpperCase(),
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.textSecondary),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -73,12 +73,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               onTap: () => setState(() => _tempSpecialty = s),
             )).toList(),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             LocalizationService.translate('location', widget.lang).toUpperCase(),
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.textSecondary),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Wrap(
             spacing: 8,
             runSpacing: 8,
@@ -88,7 +88,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               onTap: () => setState(() => _tempCity = c),
             )).toList(),
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
@@ -98,7 +98,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.accentGreen,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               ),
               child: Text(
@@ -116,7 +116,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.accentGreenSoft : AppColors.filterInactive,
           borderRadius: BorderRadius.circular(20),

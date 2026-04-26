@@ -69,42 +69,42 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
           ),
           body: SingleChildScrollView(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Icon
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: AppColors.accentGreenSoft,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Icon(Icons.person_outline, color: AppColors.accentGreen, size: 40),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
 
                 // Title
                 Text(
                   LocalizationService.translate('edit_profile', lang),
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   LocalizationService.translate('edit_profile_subtitle', lang),
                   style: TextStyle(fontSize: 15, color: AppColors.textSecondary, height: 1.5),
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
 
                 if (_error != null)
                   Container(
-                    padding: EdgeInsets.all(12),
-                    margin: EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(bottom: 16),
                     decoration: BoxDecoration(color: AppColors.redSoft, borderRadius: BorderRadius.circular(8)),
                     child: Row(
                       children: [
                         Icon(Icons.error_outline, color: AppColors.red, size: 18),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Expanded(child: Text(_error!, style: TextStyle(color: AppColors.red))),
                       ],
                     ),
@@ -112,7 +112,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                 // Display Name field
                 Text(LocalizationService.translate('full_name', lang), style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold)),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _nameCtrl,
                   style: TextStyle(color: AppColors.textPrimary),
@@ -130,11 +130,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     fillColor: AppColors.surface,
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
 
                 // Password Confirmation field
                 Text(LocalizationService.translate('confirm_password', lang), style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold)),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: _passCtrl,
                   obscureText: true,
@@ -155,14 +155,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     fillColor: AppColors.surface,
                   ),
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
 
                 // Save Button
                 GestureDetector(
                   onTap: _isLoading ? null : _saveProfile,
                   child: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                       color: _isLoading ? AppColors.borderTertiary : AppColors.accentGreen,
                       borderRadius: BorderRadius.circular(12),

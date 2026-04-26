@@ -81,7 +81,7 @@ class NotificationService {
           icon: '@mipmap/ic_launcher',
           enableVibration: true,
           playSound: true,
-          sound: RawResourceAndroidNotificationSound('alarm_clock'),
+          sound: const RawResourceAndroidNotificationSound('alarm_clock'),
           audioAttributesUsage: AudioAttributesUsage.alarm,
           category: AndroidNotificationCategory.alarm,
           fullScreenIntent: true,

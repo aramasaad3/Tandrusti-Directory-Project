@@ -31,7 +31,7 @@ class MyDoctorsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -39,7 +39,7 @@ class MyDoctorsScreen extends StatelessWidget {
                       LocalizationService.translate('my_doctors', lang),
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       '${favIds.length} ${LocalizationService.translate('saved', lang)}',
                       style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
@@ -55,7 +55,7 @@ class MyDoctorsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.bookmark, color: AppColors.redSoft, size: 64),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           LocalizationService.translate('no_saved_doctors', lang),
                           style: TextStyle(color: AppColors.textSecondary),

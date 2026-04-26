@@ -63,46 +63,46 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
           ),
           body: SingleChildScrollView(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Icon
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: AppColors.accentGreenSoft,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Icon(Icons.lock_reset_rounded, color: AppColors.accentGreen, size: 40),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
 
                 // Title
                 Text(
                   LocalizationService.translate('forgot_password', lang),
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   LocalizationService.translate('forgot_password_subtitle', lang),
                   style: TextStyle(fontSize: 15, color: AppColors.textSecondary, height: 1.5),
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
 
                 // Success state
                 if (_emailSent) ...[
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: AppColors.accentGreenSoft,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.accentGreen.withOpacity(0.3)),
+                      border: Border.all(color: AppColors.accentGreen.withValues(alpha: 0.3)),
                     ),
                     child: Row(
                       children: [
                         Icon(Icons.mark_email_read_rounded, color: AppColors.accentGreen, size: 32),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +111,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 LocalizationService.translate('reset_email_sent', lang),
                                 style: TextStyle(color: AppColors.accentGreen, fontWeight: FontWeight.bold, fontSize: 16),
                               ),
-                              SizedBox(height: 4),
+                              const SizedBox(height: 4),
                               Text(
                                 LocalizationService.translate('reset_email_sent_subtitle', lang),
                                 style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
@@ -122,12 +122,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         color: AppColors.accentGreen,
                         borderRadius: BorderRadius.circular(12),
@@ -144,8 +144,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   // Error message
                   if (_error != null)
                     Container(
-                      padding: EdgeInsets.all(12),
-                      margin: EdgeInsets.only(bottom: 16),
+                      padding: const EdgeInsets.all(12),
+                      margin: const EdgeInsets.only(bottom: 16),
                       decoration: BoxDecoration(
                         color: AppColors.redSoft,
                         borderRadius: BorderRadius.circular(8),
@@ -153,7 +153,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       child: Row(
                         children: [
                           Icon(Icons.error_outline, color: AppColors.red, size: 18),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Expanded(child: Text(_error!, style: TextStyle(color: AppColors.red))),
                         ],
                       ),
@@ -180,14 +180,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       fillColor: AppColors.surface,
                     ),
                   ),
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
 
                   // Send Button
                   GestureDetector(
                     onTap: _isLoading ? null : _sendReset,
                     child: Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         color: _isLoading ? AppColors.borderTertiary : AppColors.accentGreen,
                         borderRadius: BorderRadius.circular(12),

@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
         await AuthService.instance.logout();
         setState(() {
           _isLoading = false;
-          _error = LocalizationService.translate('verify_email_subtitle', AppState.instance.language) ?? 'Please verify your email before logging in. A new link was sent.';
+          _error = LocalizationService.translate('verify_email_subtitle', AppState.instance.language);
         });
       } else {
         if (mounted) Navigator.pop(context); // Go back after login
@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -71,16 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
               LocalizationService.translate('login', lang),
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               LocalizationService.translate('login_subtitle', lang),
               style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             if (_error != null)
               Container(
-                padding: EdgeInsets.all(12),
-                margin: EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(color: AppColors.redSoft, borderRadius: BorderRadius.circular(8)),
                 child: Text(_error!, style: TextStyle(color: AppColors.red)),
               ),
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _passCtrl,
               obscureText: true,
@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             // Forgot Password link
             Align(
               alignment: lang == 'Kurdish' ? Alignment.centerLeft : Alignment.centerRight,
@@ -121,12 +121,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             GestureDetector(
               onTap: _isLoading ? null : _login,
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: BoxDecoration(
                   color: _isLoading ? AppColors.borderTertiary : AppColors.accentGreen,
                   borderRadius: BorderRadius.circular(12),
@@ -138,14 +138,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(LocalizationService.translate('no_account', lang), style: TextStyle(color: AppColors.textSecondary)),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => RegisterScreen()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const RegisterScreen()));
                   },
                   child: Text(LocalizationService.translate('register', lang), style: TextStyle(color: AppColors.accentGreen)),
                 )

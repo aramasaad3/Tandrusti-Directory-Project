@@ -81,7 +81,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -89,16 +89,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               LocalizationService.translate('register', lang),
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text(
               LocalizationService.translate('register_subtitle', lang),
               style: TextStyle(fontSize: 16, color: AppColors.textSecondary),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             if (_error != null)
               Container(
-                padding: EdgeInsets.all(12),
-                margin: EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.all(12),
+                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(color: AppColors.redSoft, borderRadius: BorderRadius.circular(8)),
                 child: Text(_error!, style: TextStyle(color: AppColors.red)),
               ),
@@ -113,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _emailCtrl,
               keyboardType: TextInputType.emailAddress,
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _passCtrl,
               obscureText: true,
@@ -137,12 +137,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.accentGreen)),
               ),
             ),
-            SizedBox(height: 48),
+            const SizedBox(height: 48),
             GestureDetector(
               onTap: _isLoading ? null : _register,
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 decoration: BoxDecoration(
                   color: _isLoading ? AppColors.borderTertiary : AppColors.accentGreen,
                   borderRadius: BorderRadius.circular(12),
@@ -154,14 +154,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(LocalizationService.translate('has_account', lang), style: TextStyle(color: AppColors.textSecondary)),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
                   },
                   child: Text(LocalizationService.translate('login', lang), style: TextStyle(color: AppColors.accentGreen)),
                 )

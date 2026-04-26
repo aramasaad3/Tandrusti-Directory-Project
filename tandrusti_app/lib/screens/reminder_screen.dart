@@ -81,14 +81,14 @@ class _ReminderScreenState extends State<ReminderScreen> {
                mainAxisSize: MainAxisSize.min,
                children: [
                  Container(
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: AppColors.purpleSoft,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(Icons.alarm, color: AppColors.purple, size: 16),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                  Text(LocalizationService.translate('app_title', lang), style: TextStyle(fontSize: 16, color: AppColors.textPrimary)),
                ],
             ),
@@ -97,7 +97,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -109,7 +109,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                               LocalizationService.translate('pill_reminders', lang),
                               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                             ),
-                            SizedBox(height: 4),
+                            const SizedBox(height: 4),
                             Text(
                               LocalizationService.translate('never_miss_dose', lang),
                               style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
@@ -117,7 +117,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                           ],
                        ),
                      ),
-                     SizedBox(width: 8),
+                     const SizedBox(width: 8),
                      if (!_isAdding)
                        GestureDetector(
                           onTap: () async {
@@ -125,17 +125,17 @@ class _ReminderScreenState extends State<ReminderScreen> {
                              await NotificationService.requestPermissions();
                           },
                           child: Container(
-                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                              decoration: BoxDecoration(
                                 color: AppColors.accentGreenSoft,
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: AppColors.accentGreen.withOpacity(0.5))
+                                border: Border.all(color: AppColors.accentGreen.withValues(alpha: 0.5))
                              ),
                              child: Row(
                                mainAxisSize: MainAxisSize.min,
                                children: [
                                  Icon(Icons.add, color: AppColors.accentGreen, size: 18),
-                                 SizedBox(width: 4),
+                                 const SizedBox(width: 4),
                                  Text(LocalizationService.translate('add', lang), style: TextStyle(color: AppColors.accentGreen, fontWeight: FontWeight.bold)),
                                ],
                              )
@@ -147,8 +147,8 @@ class _ReminderScreenState extends State<ReminderScreen> {
 
               if (_isAdding)
                 Container(
-                   margin: EdgeInsets.symmetric(horizontal: 20),
-                   padding: EdgeInsets.all(20),
+                   margin: const EdgeInsets.symmetric(horizontal: 20),
+                   padding: const EdgeInsets.all(20),
                    decoration: BoxDecoration(
                       color: AppColors.surface,
                       borderRadius: BorderRadius.circular(24),
@@ -158,7 +158,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                          Text(LocalizationService.translate('add_reminder', lang), style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-                         SizedBox(height: 16),
+                         const SizedBox(height: 16),
                          TextField(
                             controller: _medNameController,
                             style: TextStyle(color: AppColors.textPrimary),
@@ -168,10 +168,10 @@ class _ReminderScreenState extends State<ReminderScreen> {
                                filled: true,
                                fillColor: AppColors.background,
                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                               contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                             ),
                          ),
-                         SizedBox(height: 12),
+                         const SizedBox(height: 12),
                          Row(
                            children: [
                              Expanded(
@@ -185,11 +185,11 @@ class _ReminderScreenState extends State<ReminderScreen> {
                                       filled: true,
                                       fillColor: AppColors.background,
                                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                                    ),
                                 ),
                              ),
-                             SizedBox(width: 12),
+                             const SizedBox(width: 12),
                              Expanded(
                                 child: GestureDetector(
                                    onTap: () async {
@@ -228,27 +228,27 @@ class _ReminderScreenState extends State<ReminderScreen> {
                              )
                            ],
                          ),
-                         SizedBox(height: 20),
+                         const SizedBox(height: 20),
                          Row(
                             children: [
                                Expanded(
                                   child: OutlinedButton(
                                      onPressed: () => setState(() => _isAdding = false),
                                      style: OutlinedButton.styleFrom(
-                                        padding: EdgeInsets.symmetric(vertical: 14),
+                                        padding: const EdgeInsets.symmetric(vertical: 14),
                                         side: BorderSide(color: AppColors.borderTertiary),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
                                      ),
                                      child: Text(LocalizationService.translate('cancel', lang), style: TextStyle(color: AppColors.textPrimary)),
                                   ),
                                ),
-                               SizedBox(width: 12),
+                               const SizedBox(width: 12),
                                Expanded(
                                   child: ElevatedButton(
                                      onPressed: () => _saveReminder(lang),
                                      style: ElevatedButton.styleFrom(
                                         backgroundColor: AppColors.accentGreen,
-                                        padding: EdgeInsets.symmetric(vertical: 14),
+                                        padding: const EdgeInsets.symmetric(vertical: 14),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
                                      ),
                                      child: Text(LocalizationService.translate('save', lang), style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold)),
@@ -267,7 +267,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.alarm_off, color: AppColors.purpleSoft, size: 64),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           LocalizationService.translate('no_reminders', lang),
                           style: TextStyle(color: AppColors.textSecondary),
@@ -286,8 +286,8 @@ class _ReminderScreenState extends State<ReminderScreen> {
                       final iconColor = index % 2 == 0 ? AppColors.purple : AppColors.blue;
 
                       return Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        padding: EdgeInsets.all(16),
+                        margin: const EdgeInsets.only(bottom: 16),
+                        padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           color: AppColors.surface,
                           borderRadius: BorderRadius.circular(20),
@@ -301,25 +301,25 @@ class _ReminderScreenState extends State<ReminderScreen> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: iconColor.withOpacity(0.15),
+                                    color: iconColor.withValues(alpha: 0.15),
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: Icon(Icons.medication, color: iconColor, size: 28),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(reminder.medicineName, style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(reminder.dosage, style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 12),
+                            const SizedBox(height: 12),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -345,16 +345,16 @@ class _ReminderScreenState extends State<ReminderScreen> {
                                             reminder.isEnabled = val;
                                           });
                                         },
-                                        activeColor: AppColors.accentGreen,
+                                        activeThumbColor: AppColors.accentGreen,
                                       ),
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     GestureDetector(
                                       onTap: () async {
                                         await AppState.instance.deleteReminder(reminder.id);
                                       },
                                       child: Container(
-                                        padding: EdgeInsets.all(6),
+                                        padding: const EdgeInsets.all(6),
                                         decoration: BoxDecoration(
                                           color: AppColors.redSoft,
                                           borderRadius: BorderRadius.circular(8)

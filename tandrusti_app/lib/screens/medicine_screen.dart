@@ -34,14 +34,14 @@ class _MedicineScreenState extends State<MedicineScreen> {
                mainAxisSize: MainAxisSize.min,
                children: [
                  Container(
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: AppColors.redSoft,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(Icons.medication, color: AppColors.red, size: 16),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                  Text(LocalizationService.translate('app_title', lang), style: TextStyle(fontSize: 16, color: AppColors.textPrimary)),
                ],
             ),
@@ -50,7 +50,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -58,12 +58,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
                       LocalizationService.translate('medicine_guide', lang),
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       LocalizationService.translate('scientific_brand_search', lang),
                       style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       decoration: InputDecoration(
                         hintText: LocalizationService.translate('search_medicine_hint', lang),
@@ -83,7 +83,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                            borderRadius: BorderRadius.circular(16),
                            borderSide: BorderSide(color: AppColors.accentGreen),
                         ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 14),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 14),
                       ),
                       style: TextStyle(color: AppColors.textPrimary),
                       onChanged: (val) {
@@ -136,8 +136,8 @@ class _MedicineScreenState extends State<MedicineScreen> {
                             )));
                           },
                           child: Container(
-                            margin: EdgeInsets.only(bottom: 16),
-                            padding: EdgeInsets.all(16),
+                            margin: const EdgeInsets.only(bottom: 16),
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: AppColors.surface,
                               borderRadius: BorderRadius.circular(20),
@@ -154,21 +154,21 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                   ),
                                   child: Icon(Icons.medication, color: AppColors.red),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(scientificName, style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text(brands, style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
-                                      SizedBox(height: 8),
+                                      const SizedBox(height: 8),
                                       Container(
-                                         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                          decoration: BoxDecoration(
                                             color: AppColors.accentGreenSoft,
                                             borderRadius: BorderRadius.circular(6),
-                                            border: Border.all(color: AppColors.accentGreen.withOpacity(0.3))
+                                            border: Border.all(color: AppColors.accentGreen.withValues(alpha: 0.3))
                                          ),
                                          child: Text(
                                             transCategory,

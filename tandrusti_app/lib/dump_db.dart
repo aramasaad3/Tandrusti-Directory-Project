@@ -8,11 +8,11 @@ void main() async {
   
   final meds = await FirebaseFirestore.instance.collection('medicines').get();
   for (var doc in meds.docs) {
-    print('MED: ${doc.id} - ${doc.data()['usageInstructions']} - ${doc.data()['sideEffects']}');
+    debugPrint('MED: ${doc.id} - ${doc.data()['usageInstructions']} - ${doc.data()['sideEffects']}');
   }
   
   final tests = await FirebaseFirestore.instance.collection('tests').get();
   for (var doc in tests.docs) {
-    print('TEST: ${doc.id} - ${doc.data()['whatToExpect']} - ${doc.data()['preparationInstruction']}');
+    debugPrint('TEST: ${doc.id} - ${doc.data()['whatToExpect']} - ${doc.data()['preparationInstruction']}');
   }
 }

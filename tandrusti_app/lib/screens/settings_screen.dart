@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
              ),
           ),
           body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -38,7 +38,7 @@ class SettingsScreen extends StatelessWidget {
                   LocalizationService.translate('app_preferences', lang).toUpperCase(),
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.textSecondary),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.surface,
@@ -48,9 +48,9 @@ class SettingsScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                         leading: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: AppColors.blueSoft,
                             borderRadius: BorderRadius.circular(10),
@@ -76,9 +76,9 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Divider(height: 1, color: AppColors.filterInactive),
                       ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                         leading: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: AppColors.purpleSoft,
                             borderRadius: BorderRadius.circular(10),
@@ -97,16 +97,16 @@ class SettingsScreen extends StatelessWidget {
                              onChanged: (val) {
                                 AppState.instance.toggleTheme(val);
                              },
-                             activeColor: AppColors.accentGreen,
+                             activeThumbColor: AppColors.accentGreen,
                           ),
                         )
                       ),
                       if (AuthService.instance.currentUser != null) ...[
                         Divider(height: 1, color: AppColors.filterInactive),
                         ListTile(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                           leading: Container(
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
                               color: AppColors.accentGreenSoft,
                               borderRadius: BorderRadius.circular(10),
@@ -125,12 +125,12 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Text(
                   LocalizationService.translate('info_support', lang).toUpperCase(),
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppColors.textSecondary),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Container(
                   decoration: BoxDecoration(
                      color: AppColors.surface,
@@ -161,9 +161,9 @@ class SettingsScreen extends StatelessWidget {
                          }
                       },
                       child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                         leading: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: AppColors.redSoft,
                             borderRadius: BorderRadius.circular(10),
@@ -178,7 +178,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 
-                 SizedBox(height: 48),
+                 const SizedBox(height: 48),
                  Center(
                    child: Text(
                      'Tandrusti App Version 1.0.0',

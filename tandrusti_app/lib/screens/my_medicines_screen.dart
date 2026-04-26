@@ -30,7 +30,7 @@ class MyMedicinesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -38,7 +38,7 @@ class MyMedicinesScreen extends StatelessWidget {
                       LocalizationService.translate('my_medicines', lang),
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       '${favIds.length} ${LocalizationService.translate('saved', lang)}',
                       style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
@@ -54,7 +54,7 @@ class MyMedicinesScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.bookmark, color: AppColors.purpleSoft, size: 64),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Text(
                           LocalizationService.translate('no_saved_medicines', lang),
                           style: TextStyle(color: AppColors.textSecondary),
@@ -99,8 +99,8 @@ class MyMedicinesScreen extends StatelessWidget {
                               )));
                             },
                             child: Container(
-                              margin: EdgeInsets.only(bottom: 16),
-                              padding: EdgeInsets.all(16),
+                              margin: const EdgeInsets.only(bottom: 16),
+                              padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
                                 color: AppColors.surface,
                                 borderRadius: BorderRadius.circular(20),
@@ -117,21 +117,21 @@ class MyMedicinesScreen extends StatelessWidget {
                                     ),
                                     child: Icon(Icons.medication, color: AppColors.red),
                                   ),
-                                  SizedBox(width: 16),
+                                  const SizedBox(width: 16),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(scientificName, style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-                                        SizedBox(height: 4),
+                                        const SizedBox(height: 4),
                                         Text(brands, style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Container(
-                                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                            decoration: BoxDecoration(
                                               color: AppColors.accentGreenSoft,
                                               borderRadius: BorderRadius.circular(6),
-                                              border: Border.all(color: AppColors.accentGreen.withOpacity(0.3))
+                                              border: Border.all(color: AppColors.accentGreen.withValues(alpha: 0.3))
                                            ),
                                            child: Text(
                                               transCategory,

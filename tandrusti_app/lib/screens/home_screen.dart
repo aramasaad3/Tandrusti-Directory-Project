@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: AppColors.background,
           body: SafeArea(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   }
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                   decoration: BoxDecoration(
                                     color: AppColors.surface,
                                     borderRadius: BorderRadius.circular(12),
@@ -164,14 +164,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: [
                                       Icon(user == null ? Icons.person_outline : Icons.person, color: AppColors.accentGreen, size: 20),
                                       if (user != null) ...[
-                                        SizedBox(width: 6),
+                                        const SizedBox(width: 6),
                                         Text(user.displayName.split(' ')[0], style: TextStyle(color: AppColors.textPrimary, fontSize: 13, fontWeight: FontWeight.bold)),
                                       ]
                                     ],
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 LocalizationService.translate('app_title', lang),
                                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
@@ -191,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                             child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                               decoration: BoxDecoration(
                                 color: AppColors.surface,
                                 borderRadius: BorderRadius.circular(8),
@@ -203,12 +203,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           // Settings gear
                           GestureDetector(
                             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen())),
                             child: Container(
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 color: AppColors.surface,
                                 borderRadius: BorderRadius.circular(8),
@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
 
-                  SizedBox(height: 32),
+                  const SizedBox(height: 32),
 
                   // Sponsor SLIDING BANNER Section
                   SizedBox(
@@ -236,20 +236,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                          final sponsor = sponsors[index];
                          return Container(
-                           margin: EdgeInsets.symmetric(horizontal: 4),
-                           padding: EdgeInsets.all(20),
+                           margin: const EdgeInsets.symmetric(horizontal: 4),
+                           padding: const EdgeInsets.all(20),
                            decoration: BoxDecoration(
                              gradient: LinearGradient(
-                               colors: [sponsor['color1'], sponsor['color1'].withOpacity(0.7)],
+                               colors: [sponsor['color1'], sponsor['color1'].withValues(alpha: 0.7)],
                                begin: Alignment.topLeft,
                                end: Alignment.bottomRight,
                              ),
                              borderRadius: BorderRadius.circular(24),
                              boxShadow: [
                                BoxShadow(
-                                 color: sponsor['color1'].withOpacity(0.3),
+                                 color: sponsor['color1'].withValues(alpha: 0.3),
                                  blurRadius: 10,
-                                 offset: Offset(0, 4),
+                                 offset: const Offset(0, 4),
                                )
                              ]
                            ),
@@ -264,25 +264,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                      children: [
                                        Text(
                                          LocalizationService.translate('sponsored', lang),
-                                         style: TextStyle(color: AppColors.white.withOpacity(0.8), fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1.2),
+                                         style: TextStyle(color: AppColors.white.withValues(alpha: 0.8), fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1.2),
                                        ),
-                                       SizedBox(height: 4),
+                                       const SizedBox(height: 4),
                                        Text(
                                          lang == 'English' ? sponsor['title_en'] : sponsor['title_ku'],
                                          style: TextStyle(color: AppColors.white, fontSize: 20, fontWeight: FontWeight.bold),
                                        ),
-                                       SizedBox(height: 6),
+                                       const SizedBox(height: 6),
                                        Text(
                                          lang == 'English' ? sponsor['subtitle_en'] : sponsor['subtitle_ku'],
-                                         style: TextStyle(color: AppColors.white.withOpacity(0.9), fontSize: 13),
+                                         style: TextStyle(color: AppColors.white.withValues(alpha: 0.9), fontSize: 13),
                                        ),
                                      ],
                                    )
                                  ),
                                  Container(
-                                   padding: EdgeInsets.all(12),
+                                   padding: const EdgeInsets.all(12),
                                    decoration: BoxDecoration(
-                                     color: AppColors.white.withOpacity(0.2),
+                                     color: AppColors.white.withValues(alpha: 0.2),
                                      shape: BoxShape.circle
                                    ),
                                    child: Icon(sponsor['icon'], color: AppColors.white, size: 36),
@@ -295,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
 
                   // 2x2 Feature Grid
                   Row(
@@ -308,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: LocalizationService.translate('directory', lang),
                         screen: const DirectoryScreen(),
                       )),
-                      SizedBox(width: 14),
+                      const SizedBox(width: 14),
                       Expanded(child: _buildFeatureCard(
                         context,
                         icon: Icons.biotech,
@@ -319,7 +319,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )),
                     ],
                   ),
-                  SizedBox(height: 14),
+                  const SizedBox(height: 14),
                   Row(
                     children: [
                       Expanded(child: _buildFeatureCard(
@@ -330,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         label: LocalizationService.translate('medicines', lang),
                         screen: const MedicineScreen(),
                       )),
-                      SizedBox(width: 14),
+                      const SizedBox(width: 14),
                       Expanded(child: _buildFeatureCard(
                         context,
                         icon: Icons.alarm,
@@ -342,19 +342,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
 
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Divider(color: AppColors.borderTertiary, thickness: 1),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
                   // Saved Bookmarks Grid
                   Row(
                     children: [
                       Expanded(
                         child: GestureDetector(
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => MyDoctorsScreen())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MyDoctorsScreen())),
                           child: Container(
                             height: 140,
-                            padding: EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: AppColors.surface,
                               borderRadius: BorderRadius.circular(18),
@@ -365,7 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: AppColors.redSoft,
                                     borderRadius: BorderRadius.circular(12),
@@ -379,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       LocalizationService.translate('my_doctors', lang),
                                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                                     ),
-                                    SizedBox(height: 2),
+                                    const SizedBox(height: 2),
                                     Text(
                                       '${AppState.instance.favDoctors.length} ${LocalizationService.translate('saved', lang)}',
                                       style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
@@ -391,13 +391,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 14),
+                      const SizedBox(width: 14),
                       Expanded(
                         child: GestureDetector(
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => MyMedicinesScreen())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MyMedicinesScreen())),
                           child: Container(
                             height: 140,
-                            padding: EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: AppColors.surface,
                               borderRadius: BorderRadius.circular(18),
@@ -408,7 +408,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: AppColors.purpleSoft,
                                     borderRadius: BorderRadius.circular(12),
@@ -422,7 +422,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       LocalizationService.translate('my_medicines', lang),
                                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                                     ),
-                                    SizedBox(height: 2),
+                                    const SizedBox(height: 2),
                                     Text(
                                       '${AppState.instance.favMedicines.length} ${LocalizationService.translate('saved', lang)}',
                                       style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
@@ -438,7 +438,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   
                   // Adding extra bottom padding to fix the overlapping issue on long screens!
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -459,7 +459,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => screen)),
       child: Container(
         height: 130,
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.surface,
           borderRadius: BorderRadius.circular(18),
@@ -470,7 +470,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: bgColor,
                 borderRadius: BorderRadius.circular(12),

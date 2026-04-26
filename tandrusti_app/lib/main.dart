@@ -6,8 +6,6 @@ import 'firebase_options.dart';
 import 'services/app_state.dart';
 import 'services/auth_service.dart';
 import 'services/notification_service.dart';
-import 'services/favorites_service.dart';
-import 'services/reminders_service.dart';
 import 'services/seed_data_service.dart';
 import 'screens/home_screen.dart';
 import 'screens/alarm_screen.dart';
@@ -18,35 +16,35 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class AppColors {
   static bool get _isDark => AppState.instance.isDarkMode;
 
-  static Color get background => _isDark ? Color(0xFF0A0F0D) : Color(0xFFF0FDF4);
-  static Color get surface => _isDark ? Color(0xFF121A16) : Color(0xFFFFFFFF);
-  static Color get appBarTint => _isDark ? Color(0xFF121A16) : Color(0xFFFFFFFF);
-  static Color get borderTertiary => _isDark ? Color(0xFF1E2D24) : Color(0xFFE2E8F0);
+  static Color get background => _isDark ? const Color(0xFF0A0F0D) : const Color(0xFFF0FDF4);
+  static Color get surface => _isDark ? const Color(0xFF121A16) : const Color(0xFFFFFFFF);
+  static Color get appBarTint => _isDark ? const Color(0xFF121A16) : const Color(0xFFFFFFFF);
+  static Color get borderTertiary => _isDark ? const Color(0xFF1E2D24) : const Color(0xFFE2E8F0);
   
-  static Color get textPrimary => _isDark ? Color(0xFFE8F5EE) : Color(0xFF0F172A);
-  static Color get textSecondary => _isDark ? Color(0xFF7A9E8A) : Color(0xFF64748B);
+  static Color get textPrimary => _isDark ? const Color(0xFFE8F5EE) : const Color(0xFF0F172A);
+  static Color get textSecondary => _isDark ? const Color(0xFF7A9E8A) : const Color(0xFF64748B);
   
-  static Color accentGreen = Color(0xFF22C55E);
-  static Color get accentGreenSoft => Color(0xFF22C55E).withOpacity(0.15);
+  static Color accentGreen = const Color(0xFF22C55E);
+  static Color get accentGreenSoft => const Color(0xFF22C55E).withValues(alpha: 0.15);
   
-  static Color amber = Color(0xFFF59E0B);
-  static Color get amberSoft => Color(0xFFF59E0B).withOpacity(0.15);
+  static Color amber = const Color(0xFFF59E0B);
+  static Color get amberSoft => const Color(0xFFF59E0B).withValues(alpha: 0.15);
   
-  static Color blue = Color(0xFF3B82F6);
-  static Color get blueSoft => Color(0xFF3B82F6).withOpacity(0.15);
+  static Color blue = const Color(0xFF3B82F6);
+  static Color get blueSoft => const Color(0xFF3B82F6).withValues(alpha: 0.15);
   
-  static Color red = Color(0xFFEF4444);
-  static Color get redSoft => Color(0xFFEF4444).withOpacity(0.15);
+  static Color red = const Color(0xFFEF4444);
+  static Color get redSoft => const Color(0xFFEF4444).withValues(alpha: 0.15);
   
-  static Color purple = Color(0xFFA855F7);
-  static Color get purpleSoft => Color(0xFFA855F7).withOpacity(0.15);
+  static Color purple = const Color(0xFFA855F7);
+  static Color get purpleSoft => const Color(0xFFA855F7).withValues(alpha: 0.15);
   
-  static Color get white => _isDark ? Color(0xFFFFFFFF) : Color(0xFFFFFFFF);
+  static Color get white => _isDark ? const Color(0xFFFFFFFF) : const Color(0xFFFFFFFF);
   
-  static Color get filterInactive => _isDark ? Color(0xFF182018) : Color(0xFFF1F5F9);
-  static Color get inputHint => _isDark ? Color(0xFF3A5048) : Color(0xFF94A3B8);
+  static Color get filterInactive => _isDark ? const Color(0xFF182018) : const Color(0xFFF1F5F9);
+  static Color get inputHint => _isDark ? const Color(0xFF3A5048) : const Color(0xFF94A3B8);
   
-  static LinearGradient headerGradient = LinearGradient(
+  static LinearGradient headerGradient = const LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [Color(0xFF16A34A), Color(0xFF22C55E)],
@@ -109,21 +107,21 @@ class TandrustiApp extends StatelessWidget {
           themeMode: AppState.instance.isDarkMode ? ThemeMode.dark : ThemeMode.light,
           theme: ThemeData(
             brightness: Brightness.light,
-            scaffoldBackgroundColor: Color(0xFFF0FDF4),
+            scaffoldBackgroundColor: const Color(0xFFF0FDF4),
             colorScheme: ColorScheme.light(
               primary: AppColors.accentGreen,
               secondary: AppColors.accentGreen,
-              surface: Color(0xFFFFFFFF),
-              onPrimary: Color(0xFFFFFFFF),
-              onSecondary: Color(0xFF0F172A),
-              onSurface: Color(0xFF0F172A),
+              surface: const Color(0xFFFFFFFF),
+              onPrimary: const Color(0xFFFFFFFF),
+              onSecondary: const Color(0xFF0F172A),
+              onSurface: const Color(0xFF0F172A),
             ),
-            cardColor: Color(0xFFFFFFFF),
+            cardColor: const Color(0xFFFFFFFF),
             appBarTheme: AppBarTheme(
-              backgroundColor: Color(0xFFFFFFFF),
+              backgroundColor: const Color(0xFFFFFFFF),
               elevation: 0,
               centerTitle: true,
-              titleTextStyle: TextStyle(
+              titleTextStyle: const TextStyle(
                 color: Color(0xFF0F172A),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -132,10 +130,10 @@ class TandrustiApp extends StatelessWidget {
             ),
             textTheme: GoogleFonts.interTextTheme(
                ThemeData.light().textTheme.copyWith(
-                  bodyLarge: TextStyle(color: Color(0xFF0F172A)),
-                  bodyMedium: TextStyle(color: Color(0xFF0F172A)),
-                  titleMedium: TextStyle(color: Color(0xFF0F172A)),
-                  labelLarge: TextStyle(color: Color(0xFF64748B)),
+                  bodyLarge: const TextStyle(color: Color(0xFF0F172A)),
+                  bodyMedium: const TextStyle(color: Color(0xFF0F172A)),
+                  titleMedium: const TextStyle(color: Color(0xFF0F172A)),
+                  labelLarge: const TextStyle(color: Color(0xFF64748B)),
                )
             ),
             useMaterial3: true,
@@ -178,7 +176,7 @@ class TandrustiApp extends StatelessWidget {
 
         if (kIsWeb || defaultTargetPlatform == TargetPlatform.windows) {
           return Container(
-            color: Color(0xFF030504),
+            color: const Color(0xFF030504),
             child: Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),

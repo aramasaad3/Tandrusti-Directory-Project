@@ -24,8 +24,8 @@ class DoctorCard extends StatelessWidget {
     final doctorCity = LocalizationService.translate(rawCity, lang);
 
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(20),
@@ -42,7 +42,7 @@ class DoctorCard extends StatelessWidget {
             ),
             child: Icon(Icons.person, color: AppColors.accentGreen),
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,16 +51,16 @@ class DoctorCard extends StatelessWidget {
                   doctorName, 
                   style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   doctorSpecialty, 
                   style: TextStyle(color: AppColors.accentGreen, fontSize: 13, fontWeight: FontWeight.w600)
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Row(
                    children: [
                      Icon(Icons.location_on, size: 12, color: AppColors.textSecondary),
-                     SizedBox(width: 4),
+                     const SizedBox(width: 4),
                       Text(doctorCity, style: TextStyle(color: AppColors.textSecondary, fontSize: 12)),
                    ],
                 )

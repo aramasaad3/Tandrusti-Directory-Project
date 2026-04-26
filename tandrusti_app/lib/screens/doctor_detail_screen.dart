@@ -37,10 +37,10 @@ class DoctorDetailScreen extends StatelessWidget {
               // Green Header
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 30),
+                padding: const EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 30),
                 decoration: BoxDecoration(
                   color: AppColors.accentGreen,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(32),
                     bottomRight: Radius.circular(32)
                   )
@@ -53,15 +53,15 @@ class DoctorDetailScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             decoration: BoxDecoration(
-                              color: AppColors.white.withOpacity(0.2),
+                              color: AppColors.white.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Row(
                               children: [
                                 Icon(Icons.arrow_back_ios, color: AppColors.white, size: 14),
-                                SizedBox(width: 4),
+                                const SizedBox(width: 4),
                                 Text(LocalizationService.translate('back', lang), style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -70,9 +70,9 @@ class DoctorDetailScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () => AppState.instance.toggleFavoriteDoctor(doctorId),
                           child: Container(
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: isFav ? AppColors.redSoft : AppColors.white.withOpacity(0.2),
+                              color: isFav ? AppColors.redSoft : AppColors.white.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Icon(isFav ? Icons.favorite : Icons.favorite_border, color: isFav ? AppColors.red : AppColors.white),
@@ -80,26 +80,26 @@ class DoctorDetailScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     Row(
                       children: [
                         Container(
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
-                            color: AppColors.white.withOpacity(0.2),
+                            color: AppColors.white.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: Icon(Icons.person, color: AppColors.white, size: 40),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(doctorName, style: TextStyle(color: AppColors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                              SizedBox(height: 4),
-                              Text(doctorSpecialty, style: TextStyle(color: AppColors.white.withOpacity(0.8), fontSize: 16)),
+                              const SizedBox(height: 4),
+                              Text(doctorSpecialty, style: TextStyle(color: AppColors.white.withValues(alpha: 0.8), fontSize: 16)),
                             ],
                           ),
                         ),
@@ -109,17 +109,17 @@ class DoctorDetailScreen extends StatelessWidget {
                 ),
               ),
               
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(LocalizationService.translate('clinic_info', lang).toUpperCase(), style: TextStyle(color: AppColors.textSecondary, fontSize: 12, fontWeight: FontWeight.bold)),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: AppColors.surface,
                           borderRadius: BorderRadius.circular(24),
@@ -130,14 +130,14 @@ class DoctorDetailScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: AppColors.redSoft,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Icon(Icons.location_on, color: AppColors.red, size: 24),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,18 +149,18 @@ class DoctorDetailScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Row(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: AppColors.purpleSoft,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Icon(Icons.phone, color: AppColors.purple, size: 24),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +180,7 @@ class DoctorDetailScreen extends StatelessWidget {
                         ),
                       ),
                       
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       Row(
                         children: [
                           Expanded(
@@ -192,13 +192,13 @@ class DoctorDetailScreen extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.accentGreen,
                                 foregroundColor: AppColors.white,
-                                padding: EdgeInsets.symmetric(vertical: 16),
+                                padding: const EdgeInsets.symmetric(vertical: 16),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                                 elevation: 0,
                               ),
                             ),
                           ),
-                          SizedBox(width: 12),
+                          const SizedBox(width: 12),
                           Expanded(
                             flex: 2,
                             child: OutlinedButton.icon(
@@ -212,7 +212,7 @@ class DoctorDetailScreen extends StatelessWidget {
                               label: Text(LocalizationService.translate('call_btn', lang), style: TextStyle(color: AppColors.accentGreen, fontWeight: FontWeight.bold)),
                               style: OutlinedButton.styleFrom(
                                 side: BorderSide(color: AppColors.accentGreenSoft),
-                                padding: EdgeInsets.symmetric(vertical: 16),
+                                padding: const EdgeInsets.symmetric(vertical: 16),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                               ),
                             ),
@@ -220,7 +220,7 @@ class DoctorDetailScreen extends StatelessWidget {
                         ],
                       ),
                       
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton.icon(
@@ -238,12 +238,12 @@ class DoctorDetailScreen extends StatelessWidget {
                           label: Text(LocalizationService.translate('report_incorrect', lang), style: TextStyle(color: AppColors.red, fontWeight: FontWeight.bold)),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(color: AppColors.redSoft),
-                            padding: EdgeInsets.symmetric(vertical: 16),
+                            padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                           ),
                         ),
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                     ],
                   ),
                 ),

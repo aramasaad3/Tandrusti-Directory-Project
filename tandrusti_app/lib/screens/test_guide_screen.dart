@@ -34,14 +34,14 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                mainAxisSize: MainAxisSize.min,
                children: [
                  Container(
-                    padding: EdgeInsets.all(4),
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       color: AppColors.amberSoft,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(Icons.biotech, color: AppColors.amber, size: 16),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                  Text(LocalizationService.translate('app_title', lang), style: TextStyle(fontSize: 16, color: AppColors.textPrimary)),
                ],
             ),
@@ -50,7 +50,7 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -58,12 +58,12 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                       LocalizationService.translate('lab_diagnostics', lang),
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       LocalizationService.translate('prep_guides', lang),
                       style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     TextField(
                       decoration: InputDecoration(
                         hintText: LocalizationService.translate('search_tests_hint', lang),
@@ -83,7 +83,7 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                            borderRadius: BorderRadius.circular(16),
                            borderSide: BorderSide(color: AppColors.accentGreen),
                         ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 14),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 14),
                       ),
                       style: TextStyle(color: AppColors.textPrimary),
                       onChanged: (val) {
@@ -150,8 +150,8 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                             )));
                           },
                           child: Container(
-                            margin: EdgeInsets.only(bottom: 16),
-                            padding: EdgeInsets.all(16),
+                            margin: const EdgeInsets.only(bottom: 16),
+                            padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: AppColors.surface,
                               borderRadius: BorderRadius.circular(20),
@@ -163,7 +163,7 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: iconColor.withOpacity(0.15),
+                                    color: iconColor.withValues(alpha: 0.15),
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: Icon(
@@ -172,15 +172,15 @@ class _TestGuideScreenState extends State<TestGuideScreen> {
                                     color: iconColor
                                   ),
                                 ),
-                                SizedBox(width: 16),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(testName, style: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.bold, fontSize: 16)),
-                                      SizedBox(height: 4),
+                                      const SizedBox(height: 4),
                                       Text('$category · $duration', style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
-                                      SizedBox(height: 8),
+                                      const SizedBox(height: 8),
                                       Text(
                                         '$stepCount ${LocalizationService.translate('prep_steps_count', lang)}',
                                         style: TextStyle(
